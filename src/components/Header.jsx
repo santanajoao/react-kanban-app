@@ -18,11 +18,11 @@ export default class Header extends Component {
     if (event.key === 'Enter') {
       this.setState({ editingBoardName: false });
     }
-  }
+  };
 
   render() {
     const { boardName, editingBoardName } = this.state;
-    const boardNameInputStyle = { width: `${boardName.length + 2.5}ch` };
+    const boardNameInputStyle = { width: `${boardName.length + 2.4}ch` };
     return (
       <header className="Header">
         { editingBoardName ? (
@@ -34,13 +34,14 @@ export default class Header extends Component {
             onChange={ this.handleInputChange }
             name="boardName"
             className="Header__board-input"
+            autoFocus
           />
         ) : (
           <h1
             onClick={ this.handleBoardNameClick }
             className="Header__board-title"
           >
-            { boardName }
+            { boardName || 'Quadro sem nome' }
           </h1>
         ) }
       </header>
