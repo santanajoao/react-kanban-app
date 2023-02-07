@@ -6,10 +6,10 @@
   gap: 0.5rem;
   overflow-x: auto;
   background-color: #0079BF;
-
 }
 
 .ColumnsList > li {
   width: 265px;
   flex-shrink: 0;
+  height: fit-content;
 }
