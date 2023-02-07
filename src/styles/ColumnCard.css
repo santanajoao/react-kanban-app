@@ -66,13 +66,13 @@
 
 .ColumnCard__movement-btn:hover,
 .ColumnCard__delete-btn:hover,
-.ColumnCard__add-btn:hover {
+.ColumnCard__plus-btn:hover {
   background-color: rgb(0, 0, 0, 0.07);
 }
 
 .ColumnCard__movement-btn:active,
 .ColumnCard__delete-btn:active,
-.ColumnCard__add-btn:active {
+.ColumnCard__plus-btn:active {
   background-color: rgb(0, 0, 0, 0.13);
 }
 
@@ -101,14 +101,11 @@
   font-size: 0.9rem;
 }
 
-.ColumnCard__add-btn {
+.ColumnCard__plus-btn {
   border: none;
   background-color: transparent;
   padding: 0.5rem;
   cursor: pointer;
-  display: flex;
-  gap: 0.3rem;
-  align-items: center;
   color: rgb(23, 44, 50);
   border-radius: 0.3em;
   width: 100%;
@@ -118,6 +115,6 @@
   font-size: 0.7rem;
 }
 
-.ColumnCard__add-btn-text {
+.ColumnCard__plus-btn-text {
   font-size: 0.9rem;
 }

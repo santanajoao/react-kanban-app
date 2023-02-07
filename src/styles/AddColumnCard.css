@@ -4,25 +4,28 @@
   flex-direction: column;
 }
 
-.AddColumnCard__open-form-btn {
+.AddColumnCard__plus-btn {
   background-color: rgb(255, 255, 255, 0.2);
   border-radius: 0.4rem;
   border: none;
-  color: #fff;
   padding: 0.7em;
   cursor: pointer;
-  font-size: 0.9rem;
   display: flex;
   justify-content: center;
   gap: 0.4rem;
   align-items: center;
+  color: #fff;
 }
 
-.AddColumnCard__open-form-btn:hover {
+.AddColumnCard__plus-btn-text {
+  font-size: 0.9rem;
+}
+
+.AddColumnCard__plus-btn:hover {
   background-color: rgb(255, 255, 255, 0.3);
 }
 
-.open-form-icon {
+.AddColumnCard__add-icon {
   font-size: 0.7rem;
 }
 

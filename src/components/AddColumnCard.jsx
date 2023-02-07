@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BsPlusLg } from 'react-icons/bs';
 import { GrFormClose } from 'react-icons/gr';
 import '../styles/AddColumnCard.css';
+import PlusButton from './PlusButton';
 
 export default class AddColumnCard extends Component {
   state = {
@@ -43,14 +43,12 @@ export default class AddColumnCard extends Component {
             </div>
           </form>
           ) : (
-          <button
-            type="button"
+          <PlusButton
             onClick={ this.handleAddingStatus }
-            className="AddColumnCard__open-form-btn"
+            className="AddColumnCard"
           >
-            <BsPlusLg className="open-form-icon" />
             Adicionar uma coluna
-          </button>
+          </PlusButton>
         ) }
       </div>
     );
