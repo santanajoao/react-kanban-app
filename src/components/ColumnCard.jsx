@@ -3,15 +3,17 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { FaTrashAlt } from 'react-icons/fa';
 import { BsPlusLg } from 'react-icons/bs';
 import '../styles/ColumnCard.css';
+import EditableTitle from './EditableTitle';
 
 export default class ColumnCard extends Component {
   render() {
     return (
       <div className="ColumnCard">
         <header className="ColumnCard__header">
-          <h2 className="ColumnCard__title">
-            Title Title TitleTitle eee
-          </h2>
+          <EditableTitle
+            initialText="Todo"
+            blockClassName="ColumnCard"
+          />
 
           <div className="ColumnCard__btns-wrapper">
             <div className="ColumnCard__movement-btns-wrapper">

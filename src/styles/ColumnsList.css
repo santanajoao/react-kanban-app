@@ -10,6 +10,6 @@
 }
 
 .ColumnsList > li {
-  width: 22%;
+  width: 265px;
   flex-shrink: 0;
 }

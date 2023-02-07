@@ -9,7 +9,7 @@
   z-index: 2;
 }
 
-.Header__board-title {
+.Header__editable-title {
   color: white;
   font-size: 1.3rem;
   font-family: sans-serif;
@@ -18,11 +18,11 @@
   font-weight: 700;
 }
 
-.Header__board-title:hover {
+.Header__editable-title:hover {
   background-color: rgb(255, 255, 255, 0.3);
 }
 
-.Header__board-input {
+.Header__editable-title-input {
   border: 2px solid skyblue;
   border-radius: 0.25em;
   font-size: 1.25rem;

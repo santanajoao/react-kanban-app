@@ -13,14 +13,31 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.1rem;
-  padding: 0.5em 0.25em;
+  padding: 0.3em 0.25em;
   width: 100%;
 }
 
-.ColumnCard__title {
+.ColumnCard__editable-title {
   font-size: 1rem;
   font-family: sans-serif;
   color: rgb(23, 44, 50);
+  font-weight: 700;
+  padding: 0.1em 0.4em;
+  border-radius: 0.25em;
+}
+
+.ColumnCard__editable-title:hover {
+  background-color: rgb(255, 255, 255, 0.7);
+}
+
+.ColumnCard__editable-title-input {
+  flex-grow: 1;
+  border: 1px solid skyblue;
+  border-radius: 0.25em;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 700;
+  outline: none;
 }
 
 .ColumnCard__btns-wrapper {
@@ -93,7 +110,8 @@
   gap: 0.3rem;
   align-items: center;
   color: rgb(23, 44, 50);
-  border-radius: 0.4em;
+  border-radius: 0.3em;
+  width: 100%;
 }
 
 .ColumnCard__add-icon {
