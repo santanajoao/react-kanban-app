@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { FaTrashAlt } from 'react-icons/fa';
-import '../styles/ColumnCard.css';
 import EditableTitle from './EditableTitle';
-import PlusButton from './PlusButton';
+import FormButton from './FormButton';
+import '../styles/ColumnCard.css';
 
 export default class ColumnCard extends Component {
   render() {
@@ -45,7 +45,12 @@ export default class ColumnCard extends Component {
         <ol></ol>
 
         <footer className="ColumnCard__footer">
-          <PlusButton className="ColumnCard">Adicionar um cartão</PlusButton>
+          <FormButton
+            blockClassName="ColumnCard"
+            inputPlaceholder="Insira o título do cartão"
+            openBtnText="Adicionar um cartão"
+            submitBtnText="Adicionar cartão"
+          />
         </footer>
       </div>
     );
