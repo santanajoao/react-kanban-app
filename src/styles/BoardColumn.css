@@ -1,13 +1,14 @@
-.ColumnCard {
+.BoardColumn {
   display: flex;
   flex-direction: column;
   background-color: #EBECF0;
   padding: 0.4rem;
   border-radius: 0.4rem;
   box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.1);
+  gap: 0.3rem;
 }
 
-.ColumnCard__header {
+.BoardColumn__header {
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
@@ -17,7 +18,7 @@
   width: 100%;
 }
 
-.ColumnCard__editable-title {
+.BoardColumn__editable-title {
   font-size: 1rem;
   font-family: sans-serif;
   color: rgb(23, 44, 50);
@@ -26,11 +27,11 @@
   border-radius: 0.25em;
 }
 
-.ColumnCard__editable-title:hover {
+.BoardColumn__editable-title:hover {
   background-color: rgb(255, 255, 255, 0.7);
 }
 
-.ColumnCard__editable-title-input {
+.BoardColumn__editable-title-input {
   flex-grow: 1;
   border: 1px solid skyblue;
   border-radius: 0.25em;
@@ -40,19 +41,19 @@
   outline: none;
 }
 
-.ColumnCard__btns-wrapper {
+.BoardColumn__btns-wrapper {
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-.ColumnCard__movement-btns-wrapper {
+.BoardColumn__movement-btns-wrapper {
   display: flex;
   align-items: center;
   gap: 0.2rem;
 }
 
-.ColumnCard__movement-btn {
+.BoardColumn__movement-btn {
   width: 1.3rem;
   height: 1.3rem;
   display: flex;
@@ -64,24 +65,24 @@
   border-radius: 0.3em;
 }
 
-.ColumnCard__movement-btn:hover,
-.ColumnCard__delete-btn:hover,
-.ColumnCard__plus-btn:hover {
+.BoardColumn__movement-btn:hover,
+.BoardColumn__delete-btn:hover,
+.BoardColumn__plus-btn:hover {
   background-color: rgb(0, 0, 0, 0.07);
 }
 
-.ColumnCard__movement-btn:active,
-.ColumnCard__delete-btn:active,
-.ColumnCard__plus-btn:active {
+.BoardColumn__movement-btn:active,
+.BoardColumn__delete-btn:active,
+.BoardColumn__plus-btn:active {
   background-color: rgb(0, 0, 0, 0.13);
 }
 
-.ColumnCard__movement-icon {
+.BoardColumn__movement-icon {
   font-size: 1rem;
   color: #000;
 }
 
-.ColumnCard__delete-btn {
+.BoardColumn__delete-btn {
   background-color: transparent;
   border: none;
   width: 1.3rem;
@@ -93,21 +94,32 @@
   border-radius: 0.3em;
 }
 
-.ColumnCard__delete-btn:hover > .ColumnCard__delete-icon {
-  color: #be0000;
+.BoardColumn__delete-btn:hover > .BoardColumn__delete-icon {
+  color: #d20000;
 }
 
-.ColumnCard__delete-icon {
+.BoardColumn__delete-icon {
   font-size: 0.9rem;
 }
 
-.ColumnCard__form {
+.BoardColumn__cards-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.BoardColumn__cards-list > li {
+  width: 100%;
+}
+
+.BoardColumn__form {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
 
-.ColumnCard__form-input {
+.BoardColumn__form-input {
   width: 100%;
   font-size: 0.9rem;
   padding: 0.4em;
@@ -116,13 +128,13 @@
   outline: none;
 }
 
-.ColumnCard__btns-wrapper {
+.BoardColumn__btns-wrapper {
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
 
-.ColumnCard__submit-btn {
+.BoardColumn__submit-btn {
   background-color: #0079BF;
   color: white;
   font-weight: 600;
@@ -133,11 +145,11 @@
   border: none;
 }
 
-.ColumnCard__submit-btn:hover {
+.BoardColumn__submit-btn:hover {
   background-color: rgb(0, 130, 200);
 }
 
-.ColumnCard__close-form-btn {
+.BoardColumn__close-form-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,7 +159,7 @@
   cursor: pointer;
 }
 
-.ColumnCard__plus-btn {
+.BoardColumn__plus-btn {
   border: none;
   background-color: transparent;
   padding: 0.5rem;
@@ -160,10 +172,10 @@
   gap: 0.3em;
 }
 
-.ColumnCard__add-icon {
+.BoardColumn__add-icon {
   font-size: 0.7rem;
 }
 
-.ColumnCard__plus-btn-text {
+.BoardColumn__plus-btn-text {
   font-size: 0.9rem;
 }

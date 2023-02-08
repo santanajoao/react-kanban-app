@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ColumnCard from './ColumnCard';
+import BoardColumn from './BoardColumn';
 import '../styles/ColumnsList.css';
-import AddColumnCard from './AddColumnCard';
+import AddBoardColumn from './AddBoardColumn';
 
 export default class ColumnsList extends Component {
   state = {
@@ -12,13 +12,13 @@ export default class ColumnsList extends Component {
     return (
       <ol className="ColumnsList">
         <li>
-          <ColumnCard />
+          <BoardColumn />
         </li>
         <li>
-          <ColumnCard />
+          <BoardColumn />
         </li>
         <li>
-          <AddColumnCard />
+          <AddBoardColumn />
         </li>
       </ol>
     );

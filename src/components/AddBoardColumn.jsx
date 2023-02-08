@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import '../styles/AddColumnCard.css';
+import '../styles/AddBoardColumn.css';
 import FormButton from './FormButton';
 
-export default class AddColumnCard extends Component {
+export default class AddBoardColumn extends Component {
   render() {
     return (
-      <div className="AddColumnCard">
+      <div className="AddBoardColumn">
         <FormButton
-          blockClassName="AddColumnCard"
+          blockClassName="AddBoardColumn"
           inputPlaceholder="Insira o título da coluna"
           openBtnText="Adicionar uma coluna"
           submitBtnText="Adicionar coluna"

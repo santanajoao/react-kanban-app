@@ -37,6 +37,7 @@ export default class FormButton extends Component {
               </button>
               <button
                 type="button"
+                title="Fechar"
                 onClick={ this.handleAddingStatus }
                 className={ `${blockClassName}__close-form-btn` }
               >
