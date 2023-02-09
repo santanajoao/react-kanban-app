@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../styles/Header.css';
 import EditableTitle from './EditableTitle';
+import '../styles/Header.css';
 
 export default class Header extends Component {
   state = {
@@ -17,7 +17,6 @@ export default class Header extends Component {
     return (
       <header className="Header">
         <EditableTitle
-          id={ 0 }
           handleTitleChange={ this.handleTitleChange }
           title={ title }
           blockClassName="Header"

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class EditableTitle extends Component {
   state = {
@@ -6,12 +7,7 @@ export default class EditableTitle extends Component {
   };
 
   handleTitleTextClick = () => this.setState({ editingTitleText: true });
-
-  // handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   this.setState({ [name]: value });
-  // };
-
+  
   handleInputEnter = (event) => {
     if (event.key === 'Enter') {
       this.setState({ editingTitleText: false });
@@ -21,14 +17,14 @@ export default class EditableTitle extends Component {
   render() {
     const { editingTitleText } = this.state;
     const { blockClassName, title, handleTitleChange, id } = this.props;
-    // const titleTextInputStyle = { width: `${title.length + 2.4}ch` };
+    const titleTextInputStyle = { width: `${title.length + 2}ch` };
     return (
       <>
         { editingTitleText ? (
           <input
             value={ title }
             type="text"
-            // style={ titleTextInputStyle }
+            style={ titleTextInputStyle }
             onKeyDown={ this.handleInputEnter }
             onChange={ (event) => handleTitleChange(event, id) }
             name="titleText"
@@ -47,3 +43,14 @@ export default class EditableTitle extends Component {
     );
   }
 }
+
+EditableTitle.propTypes = {
+  blockClassName: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  handleTitleChange: PropTypes.func.isRequired,
+  number: PropTypes.number,
+};
+
+EditableTitle.defaultProps = {
+  id: 0,
+};
