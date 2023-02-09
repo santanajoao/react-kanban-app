@@ -23,13 +23,25 @@ export default class ColumnsList extends Component {
     }));
   };
 
+  deleteColumn = (id) => {
+    const { columns } = this.state;
+    this.setState({
+      columns: columns.filter((column) => column.id !== id) ,
+    })
+  }
+
   render() {
     const { columns } = this.state;
     return (
       <ol className="ColumnsList">
-        { columns.map((column) => (
-          <li key={ column.id } >
-            <BoardColumn { ...column } />
+        { columns.map(({ id, title, cards }) => (
+          <li key={ id } >
+            <BoardColumn
+              title={ title }
+              cards={ cards }
+              id={ id }
+              handleDelete={ this.deleteColumn }
+            />
           </li>
         )) }
         <li>

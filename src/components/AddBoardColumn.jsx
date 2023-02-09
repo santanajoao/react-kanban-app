@@ -16,6 +16,7 @@ export default class AddBoardColumn extends Component {
     const { addColumnHandler } = this.props;
     const { columnTitle } = this.state;
     addColumnHandler(columnTitle)
+    this.setState({ columnTitle: '' });
   };
 
   render() {

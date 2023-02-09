@@ -8,7 +8,7 @@ import BoardCard from './BoardCard';
 
 export default class BoardColumn extends Component {
   render() {
-    const { cards, title } = this.props;
+    const { cards, title, handleDelete, id } = this.props;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
@@ -37,6 +37,7 @@ export default class BoardColumn extends Component {
             <button
               type="button"
               title="Apagar coluna"
+              onClick={ () => handleDelete(id) }
               className="BoardColumn__delete-btn"
             >
               <FaTrashAlt className="BoardColumn__delete-icon" />
