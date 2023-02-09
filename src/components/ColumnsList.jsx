@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import BoardColumn from './BoardColumn';
-import '../styles/ColumnsList.css';
 import AddBoardColumn from './AddBoardColumn';
+import getNewIndex from '../utils/getNewIndex';
+import '../styles/ColumnsList.css';
 
 export default class ColumnsList extends Component {
   state = {
@@ -30,6 +31,17 @@ export default class ColumnsList extends Component {
     })
   }
 
+  changePosition = (id, positionDifference) => {
+    const { columns } = this.state;
+    const currentIndex = columns.findIndex((column) => column.id === id);
+    const newIndex = getNewIndex(columns, currentIndex, positionDifference);
+    const targetElement = columns[currentIndex];
+    columns[currentIndex] = columns[newIndex];
+    columns[newIndex] = targetElement;
+
+    this.setState({ columns: columns });
+  }
+
   render() {
     const { columns } = this.state;
     return (
@@ -40,6 +52,7 @@ export default class ColumnsList extends Component {
               title={ title }
               cards={ cards }
               id={ id }
+              handlePositionChange={ this.changePosition }
               handleDelete={ this.deleteColumn }
             />
           </li>

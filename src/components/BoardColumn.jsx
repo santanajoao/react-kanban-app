@@ -8,7 +8,7 @@ import BoardCard from './BoardCard';
 
 export default class BoardColumn extends Component {
   render() {
-    const { cards, title, handleDelete, id } = this.props;
+    const { cards, title, handleDelete, id, handlePositionChange } = this.props;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
@@ -22,6 +22,7 @@ export default class BoardColumn extends Component {
               <button
                 type="button"
                 title="Mover para a esquerda"
+                onClick={ () => handlePositionChange(id, -1) }
                 className="BoardColumn__movement-btn"
               >
                 <AiOutlineLeft className="BoardColumn__movement-icon" />  
@@ -29,6 +30,7 @@ export default class BoardColumn extends Component {
               <button
                 type="button"
                 title="Mover para a direita"
+                onClick={ () => handlePositionChange(id, 1) }
                 className="BoardColumn__movement-btn"
               >
                 <AiOutlineRight className="BoardColumn__movement-icon" />
