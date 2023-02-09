@@ -43,10 +43,11 @@ export default class ColumnsList extends Component {
     const { columns } = this.state;
     const currentIndex = columns.findIndex((column) => column.id === id);
     const newIndex = getNewIndex(columns, currentIndex, positionDifference);
-    const targetElement = columns[currentIndex];
-    columns[currentIndex] = columns[newIndex];
-    columns[newIndex] = targetElement;
+    columns.splice(newIndex, 0, columns[currentIndex]);
 
+    const newCurrentIndex = currentIndex > newIndex ? currentIndex + 1 : currentIndex;
+    columns.splice(newCurrentIndex, 1);
+  
     this.setState({ columns: columns });
   }
 
