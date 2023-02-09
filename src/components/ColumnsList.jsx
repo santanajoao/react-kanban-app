@@ -47,7 +47,7 @@ export default class ColumnsList extends Component {
 
     const newCurrentIndex = currentIndex > newIndex ? currentIndex + 1 : currentIndex;
     columns.splice(newCurrentIndex, 1);
-  
+    
     this.setState({ columns: columns });
   }
 

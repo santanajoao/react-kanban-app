@@ -7,7 +7,10 @@ const  getNewIndex = (array, currentIndex, indexDifference) => {
   if (result > lastIndex) {
     return 0;
   }
-  return result + 1;
+  if (indexDifference > 0) {
+    return result + 1;
+  }
+  return result;
 };
 
 export default getNewIndex;
