@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 
 export default class EditableTitle extends Component {
   state = {
-    titleText: this.props.initialText,
     editingTitleText: false,
   };
 
   handleTitleTextClick = () => this.setState({ editingTitleText: true });
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
+  // handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   this.setState({ [name]: value });
+  // };
 
   handleInputEnter = (event) => {
     if (event.key === 'Enter') {
@@ -20,18 +19,18 @@ export default class EditableTitle extends Component {
   };
 
   render() {
-    const { titleText, editingTitleText } = this.state;
-    const { blockClassName } = this.props;
-    const titleTextInputStyle = { width: `${titleText.length + 2.4}ch` };
+    const { editingTitleText } = this.state;
+    const { blockClassName, title, handleTitleChange, id } = this.props;
+    // const titleTextInputStyle = { width: `${title.length + 2.4}ch` };
     return (
       <>
         { editingTitleText ? (
           <input
-            value={ titleText }
+            value={ title }
             type="text"
-            style={ titleTextInputStyle }
+            // style={ titleTextInputStyle }
             onKeyDown={ this.handleInputEnter }
-            onChange={ this.handleInputChange }
+            onChange={ (event) => handleTitleChange(event, id) }
             name="titleText"
             className={ `${blockClassName}__editable-title-input` }
             autoFocus
@@ -41,7 +40,7 @@ export default class EditableTitle extends Component {
             onClick={ this.handleTitleTextClick }
             className={ `${blockClassName}__editable-title` }
           >
-            { titleText }
+            { title }
           </h1>
         ) }
       </>

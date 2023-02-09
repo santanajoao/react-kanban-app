@@ -8,12 +8,16 @@ import BoardCard from './BoardCard';
 
 export default class BoardColumn extends Component {
   render() {
-    const { cards, title, handleDelete, id, handlePositionChange } = this.props;
+    const {
+      cards, title, handleDelete, id, handlePositionChange, handleTitleChange
+    } = this.props;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
           <EditableTitle
-            initialText={ title }
+            id={ id }
+            title={ title }
+            handleTitleChange={ handleTitleChange }
             blockClassName="BoardColumn"
           />
 

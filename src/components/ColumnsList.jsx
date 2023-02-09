@@ -28,8 +28,16 @@ export default class ColumnsList extends Component {
     const { columns } = this.state;
     this.setState({
       columns: columns.filter((column) => column.id !== id) ,
-    })
+    });
   }
+
+  handleColumnTitleChange = (event, id) => {
+    const { value } = event.target;
+    const { columns } = this.state;
+    const targetIndex = columns.findIndex((column) => column.id === id);
+    columns[targetIndex].title = value;
+    this.setState({ columns: columns });
+  };
 
   changePosition = (id, positionDifference) => {
     const { columns } = this.state;
@@ -54,6 +62,7 @@ export default class ColumnsList extends Component {
               id={ id }
               handlePositionChange={ this.changePosition }
               handleDelete={ this.deleteColumn }
+              handleTitleChange={ this.handleColumnTitleChange }
             />
           </li>
         )) }
