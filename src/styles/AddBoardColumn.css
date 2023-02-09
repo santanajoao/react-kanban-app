@@ -63,6 +63,10 @@
   border: none;
 }
 
+.AddBoardColumn__submit-btn:disabled {
+  opacity: 60%;
+}
+
 .AddBoardColumn__submit-btn:hover {
   background-color: rgb(0, 130, 200);
 }

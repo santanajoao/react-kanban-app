@@ -149,6 +149,10 @@
   background-color: rgb(0, 130, 200);
 }
 
+.BoardColumn__submit-btn:disabled {
+  opacity: 50%;
+}
+
 .BoardColumn__close-form-btn {
   display: flex;
   align-items: center;

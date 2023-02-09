@@ -44,6 +44,7 @@ export default class FormButton extends Component {
             <div className={ `${blockClassName}__btns-wrapper` }>
               <button
                 type="submit"
+                disabled={ !inputValue }
                 className={ `${blockClassName}__submit-btn` }
               >
                 { submitBtnText }
@@ -61,7 +62,8 @@ export default class FormButton extends Component {
           ) : (
           <button
             onClick={ this.handleAddingStatus }
-            className={ `${blockClassName}__plus-btn` }>
+            className={ `${blockClassName}__plus-btn` }
+          >
             <BsPlusLg className={ `${blockClassName}__add-icon` } />
             <span className={` ${blockClassName}__plus-btn-text` }>
               { openBtnText }
