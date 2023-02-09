@@ -5,33 +5,46 @@ import { BsPlusLg } from 'react-icons/bs';
 export default class FormButton extends Component {
   state = {
     isAdding: false,
-    inputValue: '',
   };
 
   handleAddingStatus = () => {
     this.setState(({ isAdding }) => ({ isAdding: !isAdding }));
   };
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { submitHandler } = this.props;
+    this.setState({ isAdding: false });
+    submitHandler();
+  }
+
   render() {
     const {
-      blockClassName, inputPlaceholder, openBtnText, submitBtnText
+      blockClassName, inputPlaceholder, openBtnText,
+      submitBtnText, inputChangeHandler, inputValue,
     } = this.props;
     const { isAdding } = this.state;
     return (
       <>
         { isAdding ? (
-          <form className={ `${blockClassName}__form` }>
+          <form
+            onSubmit={ this.handleSubmit }
+            className={ `${blockClassName}__form` }
+          >
             <input
+              value={ inputValue }
               type="text"
               placeholder={ inputPlaceholder }
+              onChange={ inputChangeHandler }
               name="inputValue"
               className={ `${blockClassName}__form-input` }
               autoFocus
             />
             <div className={ `${blockClassName}__btns-wrapper` }>
               <button
+                type="submit"
                 className={ `${blockClassName}__submit-btn` }
-                type="button"
               >
                 { submitBtnText }
               </button>

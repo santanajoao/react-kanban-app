@@ -8,11 +8,12 @@ import BoardCard from './BoardCard';
 
 export default class BoardColumn extends Component {
   render() {
+    const { cards, title } = this.props;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
           <EditableTitle
-            initialText="Todo"
+            initialText={ title }
             blockClassName="BoardColumn"
           />
 
@@ -44,12 +45,11 @@ export default class BoardColumn extends Component {
         </header>
 
         <ol className="BoardColumn__cards-list">
-          <li>
-            <BoardCard />
-          </li>
-          <li>
-            <BoardCard />
-          </li>
+          { cards.map(() => (
+            <li>
+              <BoardCard />
+            </li>
+          )) }
         </ol>
 
         <footer className="BoardColumn__footer">

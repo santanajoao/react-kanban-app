@@ -6,19 +6,36 @@ import AddBoardColumn from './AddBoardColumn';
 export default class ColumnsList extends Component {
   state = {
     columns: [],
+    id: 0,
+  };
+
+  createColumn = (columnTitle) => {
+    const { id } = this.state;
+    const newColumn = {
+      id,
+      title: columnTitle,
+      cards: [],
+    };
+
+    this.setState(({ columns, id }) => ({
+      columns: [...columns, newColumn],
+      id: id + 1,
+    }));
   };
 
   render() {
+    const { columns } = this.state;
     return (
       <ol className="ColumnsList">
+        { columns.map((column) => (
+          <li key={ column.id } >
+            <BoardColumn { ...column } />
+          </li>
+        )) }
         <li>
-          <BoardColumn />
-        </li>
-        <li>
-          <BoardColumn />
-        </li>
-        <li>
-          <AddBoardColumn />
+          <AddBoardColumn
+            addColumnHandler={ this.createColumn }
+          />
         </li>
       </ol>
     );
