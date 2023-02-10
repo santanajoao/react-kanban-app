@@ -7,41 +7,59 @@ import '../styles/ColumnsList.css';
 export default class ColumnsList extends Component {
   state = {
     columns: [],
-    id: 0,
+    columnID: 0,
+    cardID: 0,
   };
 
   createColumn = (columnTitle) => {
-    const { id } = this.state;
+    const { columnID } = this.state;
     const newColumn = {
-      id,
+      id: columnID,
       title: columnTitle,
       cards: [],
     };
 
-    this.setState(({ columns, id }) => ({
+    this.setState(({ columns, columnID }) => ({
       columns: [...columns, newColumn],
-      id: id + 1,
+      columnID: columnID + 1,
     }));
   };
 
-  deleteColumn = (id) => {
+  createCard = (columnID, cardTitle) => {
+    const { cardID, columns } = this.state;
+    const newCard = {
+      id: cardID,
+      title: cardTitle,
+    };
+
+    const columnIndex = columns.findIndex((column) => column.id === columnID);
+    const prevCards = columns[columnIndex].cards;
+    const newCards = [...prevCards, newCard];
+    columns[columnIndex].cards = newCards;
+    this.setState({
+      cardID: cardID + 1,
+      columns: columns,
+    });
+  };
+
+  deleteColumn = (columnID) => {
     const { columns } = this.state;
     this.setState({
-      columns: columns.filter((column) => column.id !== id) ,
+      columns: columns.filter((column) => column.id !== columnID) ,
     });
   }
 
-  handleColumnTitleChange = (event, id) => {
+  handleColumnTitleChange = (event, columnID) => {
     const { value } = event.target;
     const { columns } = this.state;
-    const targetIndex = columns.findIndex((column) => column.id === id);
+    const targetIndex = columns.findIndex((column) => column.id === columnID);
     columns[targetIndex].title = value;
     this.setState({ columns: columns });
   };
 
-  changePosition = (id, positionDifference) => {
+  changePosition = (columnID, positionDifference) => {
     const { columns } = this.state;
-    const currentIndex = columns.findIndex((column) => column.id === id);
+    const currentIndex = columns.findIndex((column) => column.id === columnID);
     const newIndex = getNewIndex(columns, currentIndex, positionDifference);
     columns.splice(newIndex, 0, columns[currentIndex]);
 
@@ -64,6 +82,7 @@ export default class ColumnsList extends Component {
               handlePositionChange={ this.changePosition }
               handleDelete={ this.deleteColumn }
               handleTitleChange={ this.handleColumnTitleChange }
+              handleCardCreation={ this.createCard }
             />
           </li>
         )) }

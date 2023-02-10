@@ -3,11 +3,12 @@ import ColumnsList from './components/ColumnsList';
 import Header from './components/Header';
 import './styles/App.css';
 
-// Componentizar o formulário de adicionar coluna para também adicionar um cartão
 // Criar o componente do cartão
 // > Ao clicar abre informações detalhadas
 // > Pode adicionar / alterar o título e descrição
 // > Tags. Ex: prioridades
+
+// Implementar testes
 
 export default class App extends Component {
   render() {

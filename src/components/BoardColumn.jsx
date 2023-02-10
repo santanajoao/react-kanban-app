@@ -7,10 +7,27 @@ import '../styles/BoardColumn.css';
 import BoardCard from './BoardCard';
 
 export default class BoardColumn extends Component {
+  state = {
+    newCardName: '',
+  };
+
+  handleInputChange = ({ target: { value } }) => {
+    this.setState({ newCardName: value });
+  };
+
+  submitHandler = () => {
+    const { id, handleCardCreation } = this.props;
+    const { newCardName } = this.state;
+    this.setState({ newCardName: '' });
+    handleCardCreation(id, newCardName);
+  };
+
   render() {
     const {
-      cards, title, handleDelete, id, handlePositionChange, handleTitleChange
+      cards,title, handleDelete, id,handlePositionChange,
+      handleTitleChange, handleCardCreation,
     } = this.props;
+    const { newCardName } = this.state;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
@@ -65,6 +82,9 @@ export default class BoardColumn extends Component {
             inputPlaceholder="Insira o título do cartão"
             openBtnText="Adicionar um cartão"
             submitBtnText="Adicionar cartão"
+            submitHandler={ this.submitHandler }
+            inputChangeHandler={ this.handleInputChange }
+            inputValue={ newCardName }
           />
         </footer>
       </div>
