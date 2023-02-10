@@ -3,26 +3,13 @@ import BoardColumn from './BoardColumn';
 import AddBoardColumn from './AddBoardColumn';
 import getNewIndex from '../utils/getNewIndex';
 import '../styles/ColumnsList.css';
+import { connect } from 'react-redux';
 
-export default class ColumnsList extends Component {
+class ColumnsList extends Component {
   state = {
     columns: [],
     columnID: 0,
     cardID: 0,
-  };
-
-  createColumn = (columnTitle) => {
-    const { columnID } = this.state;
-    const newColumn = {
-      id: columnID,
-      title: columnTitle,
-      cards: [],
-    };
-
-    this.setState(({ columns, columnID }) => ({
-      columns: [...columns, newColumn],
-      columnID: columnID + 1,
-    }));
   };
 
   createCard = (columnID, cardTitle) => {
@@ -70,7 +57,7 @@ export default class ColumnsList extends Component {
   }
 
   render() {
-    const { columns } = this.state;
+    const { columns } = this.props;
     return (
       <ol className="ColumnsList">
         { columns.map(({ id, title, cards }) => (
@@ -95,3 +82,9 @@ export default class ColumnsList extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ kanban }) => ({
+  columns: kanban.columns,
+});
+
+export default connect(mapStateToProps)(ColumnsList);

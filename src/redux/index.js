@@ -1,9 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from './reducers';
+import kanbanReducer from "./reducers/kanban";
 import thunk from "redux-thunk";
 
+const reducer = {
+  kanban: kanbanReducer,
+}
+
 const store = configureStore({
-  reducer: rootReducer,
+  reducer,
   middleware: [thunk],
   devTools: true,
 });
+
+export default store;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import '../styles/AddBoardColumn.css';
 import FormButton from './FormButton';
+import { addColumn } from '../redux/actions';
 
-export default class AddBoardColumn extends Component {
+class AddBoardColumn extends Component {
   state = {
     columnTitle: '',
   };
@@ -13,9 +15,9 @@ export default class AddBoardColumn extends Component {
   }
 
   addColumn = () => {
-    const { addColumnHandler } = this.props;
     const { columnTitle } = this.state;
-    addColumnHandler(columnTitle)
+    const { dispatch } = this.props;
+    dispatch(addColumn(columnTitle));
     this.setState({ columnTitle: '' });
   };
 
@@ -36,3 +38,5 @@ export default class AddBoardColumn extends Component {
     );
   }
 }
+
+export default connect()(AddBoardColumn);
