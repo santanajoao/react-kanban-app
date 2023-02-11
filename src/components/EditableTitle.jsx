@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class EditableTitle extends Component {
+class EditableTitle extends Component {
   state = {
     editingTitleText: false,
+    title: this.props.title,
   };
 
   handleTitleTextClick = () => this.setState({ editingTitleText: true });
+
+  handleTitleChange = ({ target }) => {
+    this.setState({ title: target.value });
+  };
   
-  handleInputEnter = (event) => {
-    if (event.key === 'Enter') {
+  handleInputEnter = ({ key, target: { value } }) => {
+    const { onEnter } = this.props;
+    if (key === 'Enter' && value) {
       this.setState({ editingTitleText: false });
+      onEnter && onEnter(value);
     }
   };
 
   render() {
-    const { editingTitleText } = this.state;
-    const { blockClassName, title, handleTitleChange, id } = this.props;
+    const { editingTitleText, title } = this.state;
+    const { blockClassName } = this.props;
     const titleTextInputStyle = { width: `${title.length + 2}ch` };
     return (
       <>
@@ -26,7 +33,7 @@ export default class EditableTitle extends Component {
             type="text"
             style={ titleTextInputStyle }
             onKeyDown={ this.handleInputEnter }
-            onChange={ (event) => handleTitleChange(event, id) }
+            onChange={ this.handleTitleChange }
             name="titleText"
             className={ `${blockClassName}__editable-title-input` }
             autoFocus
@@ -47,10 +54,7 @@ export default class EditableTitle extends Component {
 EditableTitle.propTypes = {
   blockClassName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  handleTitleChange: PropTypes.func.isRequired,
   number: PropTypes.number,
 };
 
-EditableTitle.defaultProps = {
-  id: 0,
-};
+export default EditableTitle;

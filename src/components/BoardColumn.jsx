@@ -6,7 +6,7 @@ import FormButton from './FormButton';
 import '../styles/BoardColumn.css';
 import BoardCard from './BoardCard';
 import { connect } from 'react-redux';
-import { removeColumn } from '../redux/actions';
+import { removeColumn, setColumnTitle } from '../redux/actions';
 
 class BoardColumn extends Component {
   state = {
@@ -26,17 +26,15 @@ class BoardColumn extends Component {
 
   render() {
     const {
-      cards, title, id, handlePositionChange,
-      handleTitleChange, dispatch
+      cards, title, id, handlePositionChange, dispatch
     } = this.props;
     const { newCardName } = this.state;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
           <EditableTitle
-            id={ id }
             title={ title }
-            handleTitleChange={ handleTitleChange }
+            onEnter={ (newTitle) => dispatch(setColumnTitle({ id, newTitle })) }
             blockClassName="BoardColumn"
           />
 

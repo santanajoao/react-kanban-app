@@ -9,3 +9,5 @@ export const addColumn = createAction('addColumn', (columnTitle) => ({
 }));
 
 export const removeColumn = createAction('removeColumn');
+
+export const setColumnTitle = createAction('setColumnTitle');
