@@ -1,4 +1,4 @@
-const  getNewIndex = (array, currentIndex, indexDifference) => {
+const getNewIndex = (array, currentIndex, indexDifference) => {
   const lastIndex = array.length - 1;
   const result = currentIndex + indexDifference;
   if (result < 0) {

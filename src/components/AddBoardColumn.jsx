@@ -12,7 +12,7 @@ class AddBoardColumn extends Component {
   handleInputChange = (event) => {
     const { value } = event.target;
     this.setState({ columnTitle: value });
-  }
+  };
 
   addColumn = () => {
     const { columnTitle } = this.state;
@@ -26,9 +26,9 @@ class AddBoardColumn extends Component {
     return (
       <div className="AddBoardColumn">
         <FormButton
-          submitHandler={ this.addColumn }
-          inputChangeHandler={ this.handleInputChange }
-          inputValue={ columnTitle }
+          submitHandler={this.addColumn}
+          inputChangeHandler={this.handleInputChange}
+          inputValue={columnTitle}
           blockClassName="AddBoardColumn"
           inputPlaceholder="Insira o título da coluna"
           openBtnText="Adicionar uma coluna"

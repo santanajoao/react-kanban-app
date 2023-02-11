@@ -12,7 +12,7 @@ class EditableTitle extends Component {
   handleTitleChange = ({ target }) => {
     this.setState({ title: target.value });
   };
-  
+
   handleInputEnter = ({ key, target: { value } }) => {
     const { onEnter } = this.props;
     if (key === 'Enter' && value) {
@@ -27,25 +27,25 @@ class EditableTitle extends Component {
     const titleTextInputStyle = { width: `${title.length + 2}ch` };
     return (
       <>
-        { editingTitleText ? (
+        {editingTitleText ? (
           <input
-            value={ title }
+            value={title}
             type="text"
-            style={ titleTextInputStyle }
-            onKeyDown={ this.handleInputEnter }
-            onChange={ this.handleTitleChange }
+            style={titleTextInputStyle}
+            onKeyDown={this.handleInputEnter}
+            onChange={this.handleTitleChange}
             name="titleText"
-            className={ `${blockClassName}__editable-title-input` }
+            className={`${blockClassName}__editable-title-input`}
             autoFocus
           />
         ) : (
           <h1
-            onClick={ this.handleTitleTextClick }
-            className={ `${blockClassName}__editable-title` }
+            onClick={this.handleTitleTextClick}
+            className={`${blockClassName}__editable-title`}
           >
-            { title }
+            {title}
           </h1>
-        ) }
+        )}
       </>
     );
   }

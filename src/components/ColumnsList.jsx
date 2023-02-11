@@ -43,32 +43,31 @@ class ColumnsList extends Component {
     const newIndex = getNewIndex(columns, currentIndex, positionDifference);
     columns.splice(newIndex, 0, columns[currentIndex]);
 
-    const newCurrentIndex = currentIndex > newIndex ? currentIndex + 1 : currentIndex;
+    const newCurrentIndex =
+      currentIndex > newIndex ? currentIndex + 1 : currentIndex;
     columns.splice(newCurrentIndex, 1);
-    
+
     this.setState({ columns: columns });
-  }
+  };
 
   render() {
     const { columns } = this.props;
     return (
       <ol className="ColumnsList">
-        { columns.map(({ id, title, cards }) => (
-          <li key={ id } >
+        {columns.map(({ id, title, cards }) => (
+          <li key={id}>
             <BoardColumn
-              title={ title }
-              cards={ cards }
-              id={ id }
-              handlePositionChange={ this.changePosition }
-              handleTitleChange={ this.handleColumnTitleChange }
-              handleCardCreation={ this.createCard }
+              title={title}
+              cards={cards}
+              id={id}
+              handlePositionChange={this.changePosition}
+              handleTitleChange={this.handleColumnTitleChange}
+              handleCardCreation={this.createCard}
             />
           </li>
-        )) }
+        ))}
         <li>
-          <AddBoardColumn
-            addColumnHandler={ this.createColumn }
-          />
+          <AddBoardColumn addColumnHandler={this.createColumn} />
         </li>
       </ol>
     );

@@ -25,16 +25,14 @@ class BoardColumn extends Component {
   };
 
   render() {
-    const {
-      cards, title, id, handlePositionChange, dispatch
-    } = this.props;
+    const { cards, title, id, handlePositionChange, dispatch } = this.props;
     const { newCardName } = this.state;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
           <EditableTitle
-            title={ title }
-            onEnter={ (newTitle) => dispatch(setColumnTitle({ id, newTitle })) }
+            title={title}
+            onEnter={(newTitle) => dispatch(setColumnTitle({ id, newTitle }))}
             blockClassName="BoardColumn"
           />
 
@@ -43,15 +41,15 @@ class BoardColumn extends Component {
               <button
                 type="button"
                 title="Mover para a esquerda"
-                onClick={ () => handlePositionChange(id, -1) }
+                onClick={() => handlePositionChange(id, -1)}
                 className="BoardColumn__movement-btn"
               >
-                <AiOutlineLeft className="BoardColumn__movement-icon" />  
+                <AiOutlineLeft className="BoardColumn__movement-icon" />
               </button>
               <button
                 type="button"
                 title="Mover para a direita"
-                onClick={ () => handlePositionChange(id, 1) }
+                onClick={() => handlePositionChange(id, 1)}
                 className="BoardColumn__movement-btn"
               >
                 <AiOutlineRight className="BoardColumn__movement-icon" />
@@ -60,7 +58,7 @@ class BoardColumn extends Component {
             <button
               type="button"
               title="Apagar coluna"
-              onClick={ () => dispatch(removeColumn(id)) }
+              onClick={() => dispatch(removeColumn(id))}
               className="BoardColumn__delete-btn"
             >
               <FaTrashAlt className="BoardColumn__delete-icon" />
@@ -69,11 +67,11 @@ class BoardColumn extends Component {
         </header>
 
         <ol className="BoardColumn__cards-list">
-          { cards.map(() => (
+          {cards.map(() => (
             <li>
               <BoardCard />
             </li>
-          )) }
+          ))}
         </ol>
 
         <footer className="BoardColumn__footer">
@@ -82,9 +80,9 @@ class BoardColumn extends Component {
             inputPlaceholder="Insira o título do cartão"
             openBtnText="Adicionar um cartão"
             submitBtnText="Adicionar cartão"
-            submitHandler={ this.submitHandler }
-            inputChangeHandler={ this.handleInputChange }
-            inputValue={ newCardName }
+            submitHandler={this.submitHandler}
+            inputChangeHandler={this.handleInputChange}
+            inputValue={newCardName}
           />
         </footer>
       </div>

@@ -6,10 +6,7 @@ export default class Header extends Component {
   render() {
     return (
       <header className="Header">
-        <EditableTitle
-          title="Meu quadro"
-          blockClassName="Header"
-        />
+        <EditableTitle title="Meu quadro" blockClassName="Header" />
       </header>
     );
   }

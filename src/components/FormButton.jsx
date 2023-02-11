@@ -17,59 +17,63 @@ export default class FormButton extends Component {
     const { submitHandler } = this.props;
     this.setState({ isAdding: false });
     submitHandler();
-  }
+  };
 
   render() {
     const {
-      blockClassName, inputPlaceholder, openBtnText,
-      submitBtnText, inputChangeHandler, inputValue,
+      blockClassName,
+      inputPlaceholder,
+      openBtnText,
+      submitBtnText,
+      inputChangeHandler,
+      inputValue,
     } = this.props;
     const { isAdding } = this.state;
     return (
       <>
-        { isAdding ? (
+        {isAdding ? (
           <form
-            onSubmit={ this.handleSubmit }
-            className={ `${blockClassName}__form` }
+            onSubmit={this.handleSubmit}
+            className={`${blockClassName}__form`}
           >
             <input
-              value={ inputValue }
+              value={inputValue}
               type="text"
-              placeholder={ inputPlaceholder }
-              onChange={ inputChangeHandler }
+              placeholder={inputPlaceholder}
+              onChange={inputChangeHandler}
               name="inputValue"
-              className={ `${blockClassName}__form-input` }
+              className={`${blockClassName}__form-input`}
               autoFocus
             />
-            <div className={ `${blockClassName}__btns-wrapper` }>
+            <div className={`${blockClassName}__btns-wrapper`}>
               <button
                 type="submit"
-                disabled={ !inputValue }
-                className={ `${blockClassName}__submit-btn` }
+                disabled={!inputValue}
+                className={`${blockClassName}__submit-btn`}
               >
-                { submitBtnText }
+                {submitBtnText}
               </button>
               <button
                 type="button"
                 title="Fechar"
-                onClick={ this.handleAddingStatus }
-                className={ `${blockClassName}__close-form-btn` }
+                onClick={this.handleAddingStatus}
+                className={`${blockClassName}__close-form-btn`}
               >
                 <GrFormClose className="close-form-icon" />
               </button>
             </div>
           </form>
-          ) : (
+        ) : (
           <button
-            onClick={ this.handleAddingStatus }
-            className={ `${blockClassName}__plus-btn` }
+            onClick={this.handleAddingStatus}
+            className={`${blockClassName}__plus-btn`}
           >
-            <BsPlusLg className={ `${blockClassName}__add-icon` } />
-            <span className={` ${blockClassName}__plus-btn-text` }>
-              { openBtnText }
+            <BsPlusLg className={`${blockClassName}__add-icon`} />
+            <span className={` ${blockClassName}__plus-btn-text`}>
+              {openBtnText}
             </span>
           </button>
-        ) }
+        )}
       </>
     );
   }
