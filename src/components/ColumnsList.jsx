@@ -29,13 +29,6 @@ class ColumnsList extends Component {
     });
   };
 
-  deleteColumn = (columnID) => {
-    const { columns } = this.state;
-    this.setState({
-      columns: columns.filter((column) => column.id !== columnID) ,
-    });
-  }
-
   handleColumnTitleChange = (event, columnID) => {
     const { value } = event.target;
     const { columns } = this.state;
@@ -67,7 +60,6 @@ class ColumnsList extends Component {
               cards={ cards }
               id={ id }
               handlePositionChange={ this.changePosition }
-              handleDelete={ this.deleteColumn }
               handleTitleChange={ this.handleColumnTitleChange }
               handleCardCreation={ this.createCard }
             />

@@ -7,3 +7,5 @@ export const addColumn = createAction('addColumn', (columnTitle) => ({
     cards: [],
   },
 }));
+
+export const removeColumn = createAction('removeColumn');

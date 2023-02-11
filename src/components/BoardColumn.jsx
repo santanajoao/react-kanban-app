@@ -5,8 +5,10 @@ import EditableTitle from './EditableTitle';
 import FormButton from './FormButton';
 import '../styles/BoardColumn.css';
 import BoardCard from './BoardCard';
+import { connect } from 'react-redux';
+import { removeColumn } from '../redux/actions';
 
-export default class BoardColumn extends Component {
+class BoardColumn extends Component {
   state = {
     newCardName: '',
   };
@@ -24,8 +26,8 @@ export default class BoardColumn extends Component {
 
   render() {
     const {
-      cards,title, handleDelete, id,handlePositionChange,
-      handleTitleChange, handleCardCreation,
+      cards, title, id, handlePositionChange,
+      handleTitleChange, dispatch
     } = this.props;
     const { newCardName } = this.state;
     return (
@@ -60,7 +62,7 @@ export default class BoardColumn extends Component {
             <button
               type="button"
               title="Apagar coluna"
-              onClick={ () => handleDelete(id) }
+              onClick={ () => dispatch(removeColumn(id)) }
               className="BoardColumn__delete-btn"
             >
               <FaTrashAlt className="BoardColumn__delete-icon" />
@@ -91,3 +93,5 @@ export default class BoardColumn extends Component {
     );
   }
 }
+
+export default connect()(BoardColumn);
