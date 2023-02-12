@@ -1,8 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
+import getNewIndex from '../../utils/getNewIndex';
 import {
   addColumn,
   removeColumn,
   setColumnTitle,
+  moveColumn,
   addCard,
   removeCard,
 } from '../actions';
@@ -37,6 +39,20 @@ const kanbanReducer = createReducer(initialState, (builder) => {
       state.columns[columnIndex].cards = prevCards.filter(
         ({ id }) => id !== cardID
       );
+    })
+    .addCase(moveColumn, (state, action) => {
+      const { columnID, positionDifference } = action.payload;
+      const currentIndex = state.columns.findIndex(({ id }) => id === columnID);
+      const newIndex = getNewIndex(
+        state.columns,
+        currentIndex,
+        positionDifference
+      );
+      state.columns.splice(newIndex, 0, state.columns[currentIndex]);
+
+      const newCurrentIndex =
+        currentIndex > newIndex ? currentIndex + 1 : currentIndex;
+      state.columns.splice(newCurrentIndex, 1);
     });
 });
 

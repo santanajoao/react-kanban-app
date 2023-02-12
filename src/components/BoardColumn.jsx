@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import EditableTitle from './EditableTitle';
 import FormButton from './FormButton';
 import BoardCard from './BoardCard';
-import { addCard, removeColumn, setColumnTitle } from '../redux/actions';
+import {
+  addCard,
+  moveColumn,
+  removeColumn,
+  setColumnTitle,
+} from '../redux/actions';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { FaTrashAlt } from 'react-icons/fa';
 import '../styles/BoardColumn.css';
@@ -26,7 +31,7 @@ class BoardColumn extends Component {
   };
 
   render() {
-    const { cards, title, id, handlePositionChange, dispatch } = this.props;
+    const { cards, title, id, dispatch } = this.props;
     const { newCardName } = this.state;
     return (
       <div className="BoardColumn">
@@ -42,7 +47,7 @@ class BoardColumn extends Component {
               <button
                 type="button"
                 title="Mover para a esquerda"
-                onClick={() => handlePositionChange(id, -1)}
+                onClick={() => dispatch(moveColumn(id, -1))}
                 className="BoardColumn__movement-btn"
               >
                 <AiOutlineLeft className="BoardColumn__movement-icon" />
@@ -50,7 +55,7 @@ class BoardColumn extends Component {
               <button
                 type="button"
                 title="Mover para a direita"
-                onClick={() => handlePositionChange(id, 1)}
+                onClick={() => dispatch(moveColumn(id, 1))}
                 className="BoardColumn__movement-btn"
               >
                 <AiOutlineRight className="BoardColumn__movement-icon" />

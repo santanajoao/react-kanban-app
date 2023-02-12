@@ -12,6 +12,16 @@ export const removeColumn = createAction('removeColumn');
 
 export const setColumnTitle = createAction('setColumnTitle');
 
+export const moveColumn = createAction(
+  'moveColumn',
+  (columnID, positionDifference) => ({
+    payload: {
+      columnID,
+      positionDifference,
+    },
+  })
+);
+
 // cria um objeto do card e especifica o id da coluna em que o card será inserido
 export const addCard = createAction('addCard', (columnID, cardTitle) => ({
   payload: {
