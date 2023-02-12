@@ -3,6 +3,9 @@ import ColumnsList from './components/ColumnsList';
 import Header from './components/Header';
 import './styles/App.css';
 
+// mover o cartão para cima ou baixo
+// mover o cartão para outras colunas ícone BiMoveHorizontal
+
 // Criar o componente do cartão
 // > Ao clicar abre informações detalhadas
 // > Pode adicionar / alterar o título e descrição
