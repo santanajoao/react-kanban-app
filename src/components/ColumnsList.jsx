@@ -1,42 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import BoardColumn from './BoardColumn';
 import AddBoardColumn from './AddBoardColumn';
 import getNewIndex from '../utils/getNewIndex';
 import '../styles/ColumnsList.css';
-import { connect } from 'react-redux';
 
 class ColumnsList extends Component {
-  state = {
-    columns: [],
-    columnID: 0,
-    cardID: 0,
-  };
-
-  createCard = (columnID, cardTitle) => {
-    const { cardID, columns } = this.state;
-    const newCard = {
-      id: cardID,
-      title: cardTitle,
-    };
-
-    const columnIndex = columns.findIndex((column) => column.id === columnID);
-    const prevCards = columns[columnIndex].cards;
-    const newCards = [...prevCards, newCard];
-    columns[columnIndex].cards = newCards;
-    this.setState({
-      cardID: cardID + 1,
-      columns: columns,
-    });
-  };
-
-  handleColumnTitleChange = (event, columnID) => {
-    const { value } = event.target;
-    const { columns } = this.state;
-    const targetIndex = columns.findIndex((column) => column.id === columnID);
-    columns[targetIndex].title = value;
-    this.setState({ columns: columns });
-  };
-
   changePosition = (columnID, positionDifference) => {
     const { columns } = this.state;
     const currentIndex = columns.findIndex((column) => column.id === columnID);
@@ -61,17 +31,26 @@ class ColumnsList extends Component {
               cards={cards}
               id={id}
               handlePositionChange={this.changePosition}
-              handleCardCreation={this.createCard}
             />
           </li>
         ))}
         <li>
-          <AddBoardColumn addColumnHandler={this.createColumn} />
+          <AddBoardColumn />
         </li>
       </ol>
     );
   }
 }
+
+ColumnsList.propTypes = {
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      cards: PropTypes.array.isRequired,
+    })
+  ).isRequired,
+};
 
 const mapStateToProps = ({ kanban }) => ({
   columns: kanban.columns,

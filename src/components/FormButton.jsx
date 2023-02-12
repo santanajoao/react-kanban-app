@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { GrFormClose } from 'react-icons/gr';
 import { BsPlusLg } from 'react-icons/bs';
 
@@ -78,3 +79,12 @@ export default class FormButton extends Component {
     );
   }
 }
+
+FormButton.propTypes = {
+  blockClassName: PropTypes.string.isRequired,
+  inputPlaceholder: PropTypes.string.isRequired,
+  openBtnText: PropTypes.string.isRequired,
+  submitBtnText: PropTypes.string.isRequired,
+  inputChangeHandler: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
+};

@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
-import { FaTrashAlt } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import EditableTitle from './EditableTitle';
 import FormButton from './FormButton';
-import '../styles/BoardColumn.css';
 import BoardCard from './BoardCard';
-import { connect } from 'react-redux';
 import { addCard, removeColumn, setColumnTitle } from '../redux/actions';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { FaTrashAlt } from 'react-icons/fa';
+import '../styles/BoardColumn.css';
 
 class BoardColumn extends Component {
   state = {
     newCardName: '',
   };
 
-  handleInputChange = ({ target: { value } }) => {
-    this.setState({ newCardName: value });
+  handleInputChange = ({ target }) => {
+    this.setState({ newCardName: target.value });
   };
 
   submitHandler = () => {
@@ -89,5 +90,17 @@ class BoardColumn extends Component {
     );
   }
 }
+
+BoardColumn.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+    })
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect()(BoardColumn);

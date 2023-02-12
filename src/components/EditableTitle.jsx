@@ -54,7 +54,11 @@ class EditableTitle extends Component {
 EditableTitle.propTypes = {
   blockClassName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  number: PropTypes.number,
+  onEnter: PropTypes.func,
+};
+
+EditableTitle.defaultProps = {
+  onEnter: () => {},
 };
 
 export default EditableTitle;

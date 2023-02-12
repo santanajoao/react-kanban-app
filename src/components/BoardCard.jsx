@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { removeCard } from '../redux/actions';
+import { FaTrashAlt } from 'react-icons/fa';
 import '../styles/BoardCard.css';
 
 class BoardCard extends Component {
@@ -24,5 +25,12 @@ class BoardCard extends Component {
     );
   }
 }
+
+BoardCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  columnID: PropTypes.string.isRequired,
+};
 
 export default connect()(BoardCard);
