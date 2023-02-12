@@ -11,3 +11,14 @@ export const addColumn = createAction('addColumn', (columnTitle) => ({
 export const removeColumn = createAction('removeColumn');
 
 export const setColumnTitle = createAction('setColumnTitle');
+
+// cria um objeto do card e especifica o id da coluna em que o card será inserido
+export const addCard = createAction('addCard', (columnID, cardTitle) => ({
+  payload: {
+    card: {
+      title: cardTitle,
+      id: nanoid(),
+    },
+    columnID,
+  },
+}));

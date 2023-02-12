@@ -6,7 +6,7 @@ import FormButton from './FormButton';
 import '../styles/BoardColumn.css';
 import BoardCard from './BoardCard';
 import { connect } from 'react-redux';
-import { removeColumn, setColumnTitle } from '../redux/actions';
+import { addCard, removeColumn, setColumnTitle } from '../redux/actions';
 
 class BoardColumn extends Component {
   state = {
@@ -18,10 +18,10 @@ class BoardColumn extends Component {
   };
 
   submitHandler = () => {
-    const { id, handleCardCreation } = this.props;
+    const { id, dispatch } = this.props;
     const { newCardName } = this.state;
     this.setState({ newCardName: '' });
-    handleCardCreation(id, newCardName);
+    dispatch(addCard(id, newCardName));
   };
 
   render() {
@@ -67,9 +67,9 @@ class BoardColumn extends Component {
         </header>
 
         <ol className="BoardColumn__cards-list">
-          {cards.map(() => (
-            <li>
-              <BoardCard />
+          {cards.map(({ id, title }) => (
+            <li key={id}>
+              <BoardCard title={title} />
             </li>
           ))}
         </ol>

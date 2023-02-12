@@ -61,7 +61,6 @@ class ColumnsList extends Component {
               cards={cards}
               id={id}
               handlePositionChange={this.changePosition}
-              handleTitleChange={this.handleColumnTitleChange}
               handleCardCreation={this.createCard}
             />
           </li>
