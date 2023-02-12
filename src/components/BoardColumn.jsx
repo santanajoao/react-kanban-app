@@ -67,9 +67,9 @@ class BoardColumn extends Component {
         </header>
 
         <ol className="BoardColumn__cards-list">
-          {cards.map(({ id, title }) => (
-            <li key={id}>
-              <BoardCard title={title} />
+          {cards.map(({ id: cardID, title }) => (
+            <li key={cardID}>
+              <BoardCard title={title} id={cardID} columnID={id} />
             </li>
           ))}
         </ol>

@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import { removeCard } from '../redux/actions';
 import '../styles/BoardCard.css';
 
-export default class BoardCard extends Component {
+class BoardCard extends Component {
   render() {
-    const { title } = this.props;
+    const { title, id, dispatch, columnID } = this.props;
     return (
       <div className="BoardCard">
-        <button title="Remover cartão" className="BoardCard__delete-btn">
+        <button
+          title="Remover cartão"
+          onClick={() => dispatch(removeCard(columnID, id))}
+          className="BoardCard__delete-btn"
+        >
           <FaTrashAlt className="delete-btn-icon" />
         </button>
 
@@ -18,3 +24,5 @@ export default class BoardCard extends Component {
     );
   }
 }
+
+export default connect()(BoardCard);

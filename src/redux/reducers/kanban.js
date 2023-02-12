@@ -1,5 +1,11 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addColumn, removeColumn, setColumnTitle, addCard } from '../actions';
+import {
+  addColumn,
+  removeColumn,
+  setColumnTitle,
+  addCard,
+  removeCard,
+} from '../actions';
 
 const initialState = {
   columns: [],
@@ -22,8 +28,15 @@ const kanbanReducer = createReducer(initialState, (builder) => {
       const { columnID, card } = action.payload;
       const columnIndex = state.columns.findIndex(({ id }) => id === columnID);
       const prevCards = state.columns[columnIndex].cards;
-      const newCards = [...prevCards, card];
-      state.columns[columnIndex].cards = newCards;
+      state.columns[columnIndex].cards = [...prevCards, card];
+    })
+    .addCase(removeCard, (state, action) => {
+      const { columnID, cardID } = action.payload;
+      const columnIndex = state.columns.findIndex(({ id }) => id === columnID);
+      const prevCards = state.columns[columnIndex].cards;
+      state.columns[columnIndex].cards = prevCards.filter(
+        ({ id }) => id !== cardID
+      );
     });
 });
 

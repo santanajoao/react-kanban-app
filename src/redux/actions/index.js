@@ -22,3 +22,10 @@ export const addCard = createAction('addCard', (columnID, cardTitle) => ({
     columnID,
   },
 }));
+
+export const removeCard = createAction('removeCard', (columnID, cardID) => ({
+  payload: {
+    columnID,
+    cardID,
+  },
+}));
