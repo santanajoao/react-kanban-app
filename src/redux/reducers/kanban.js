@@ -6,11 +6,17 @@ import {
   setColumnTitle,
   moveColumn,
   addCard,
-  removeCard,
+  // removeCard,
+  closeModal,
+  openModal,
 } from '../actions';
 
 const initialState = {
   columns: [],
+  showModal: false,
+  editingCardName: '',
+  editingCardDescription: '',
+  editingCardColumnName: '',
 };
 
 const kanbanReducer = createReducer(initialState, (builder) => {
@@ -19,40 +25,49 @@ const kanbanReducer = createReducer(initialState, (builder) => {
       state.columns = [...state.columns, action.payload];
     })
     .addCase(removeColumn, (state, action) => {
-      state.columns = state.columns.filter(({ id }) => id !== action.payload);
+      state.columns.splice(action.payload, 1);
     })
     .addCase(setColumnTitle, (state, action) => {
-      const { id, newTitle } = action.payload;
-      const columnIndex = state.columns.findIndex((column) => column.id === id);
-      state.columns[columnIndex].title = newTitle;
+      const { index, newTitle } = action.payload;
+      state.columns[index].title = newTitle;
     })
     .addCase(addCard, (state, action) => {
-      const { columnID, card } = action.payload;
-      const columnIndex = state.columns.findIndex(({ id }) => id === columnID);
+      const { columnIndex, card } = action.payload;
       const prevCards = state.columns[columnIndex].cards;
       state.columns[columnIndex].cards = [...prevCards, card];
     })
-    .addCase(removeCard, (state, action) => {
-      const { columnID, cardID } = action.payload;
-      const columnIndex = state.columns.findIndex(({ id }) => id === columnID);
-      const prevCards = state.columns[columnIndex].cards;
-      state.columns[columnIndex].cards = prevCards.filter(
-        ({ id }) => id !== cardID
-      );
-    })
+    // .addCase(removeCard, (state, action) => {
+    //   const { columnID, cardID } = action.payload;
+    //   const columnIndex = state.columns.findIndex(({ id }) => id === columnID);
+    //   const prevCards = state.columns[columnIndex].cards;
+    //   state.columns[columnIndex].cards = prevCards.filter(
+    //     ({ id }) => id !== cardID
+    //   );
+    // })
     .addCase(moveColumn, (state, action) => {
-      const { columnID, positionDifference } = action.payload;
-      const currentIndex = state.columns.findIndex(({ id }) => id === columnID);
+      const { columnIndex, positionDifference } = action.payload;
       const newIndex = getNewIndex(
         state.columns,
-        currentIndex,
+        columnIndex,
         positionDifference
       );
-      state.columns.splice(newIndex, 0, state.columns[currentIndex]);
+      state.columns.splice(newIndex, 0, state.columns[columnIndex]);
 
       const newCurrentIndex =
-        currentIndex > newIndex ? currentIndex + 1 : currentIndex;
+        columnIndex > newIndex ? columnIndex + 1 : columnIndex;
       state.columns.splice(newCurrentIndex, 1);
+    })
+    .addCase(closeModal, (state) => {
+      state.showModal = false;
+    })
+    .addCase(openModal, (state, action) => {
+      const { columnIndex, cardIndex } = action.payload;
+      const column = state.columns[columnIndex];
+      const { title, description } = column.cards[cardIndex];
+      state.editingCardName = title;
+      state.editingCardDescription = description;
+      state.editingCardColumnName = column.title;
+      state.showModal = true;
     });
 });
 

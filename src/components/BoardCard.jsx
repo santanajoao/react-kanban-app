@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeCard } from '../redux/actions';
-import { FaTrashAlt } from 'react-icons/fa';
+import { BiMoveHorizontal } from 'react-icons/bi';
+import { openModal } from '../redux/actions';
 import '../styles/BoardCard.css';
 
 class BoardCard extends Component {
   render() {
-    const { title, id, dispatch, columnID } = this.props;
+    const { title, dispatch, columnIndex, index } = this.props;
     return (
       <div className="BoardCard">
         <button
-          title="Remover cartão"
-          onClick={() => dispatch(removeCard(columnID, id))}
-          className="BoardCard__delete-btn"
+          title="Mover cartão para outra coluna"
+          onClick={() => dispatch({ type: 'NONE' })}
+          className="BoardCard__move-btn"
         >
-          <FaTrashAlt className="delete-btn-icon" />
+          <BiMoveHorizontal className="BoardCard__move-icon" />
         </button>
 
-        <button className="BoardCard__details-btn">
+        <button
+          onClick={() => dispatch(openModal(columnIndex, index))}
+          className="BoardCard__details-btn"
+        >
           <h3 className="BoardCard__title">{title}</h3>
         </button>
       </div>
@@ -28,9 +31,9 @@ class BoardCard extends Component {
 
 BoardCard.propTypes = {
   title: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
-  columnID: PropTypes.string.isRequired,
+  columnIndex: PropTypes.number.isRequired,
 };
 
 export default connect()(BoardCard);

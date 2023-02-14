@@ -1,5 +1,5 @@
 .BoardCard {
-  --delete-btn-dimensions: 1.4rem;
+  --move-btn-dimensions: 1.4rem;
   --details-btn-horizontal-padding: 0.7rem;
   width: 100%;
   position: relative;
@@ -11,31 +11,30 @@
   background-color: rgb(245, 245, 245);
 }
 
-.BoardCard:hover > .BoardCard__delete-btn {
+.BoardCard:hover > .BoardCard__move-btn {
   display: flex;
 }
 
-.BoardCard__delete-btn {
+.BoardCard__move-btn {
   display: none;
   position: absolute;
   right: 0;
   cursor: pointer;
-  margin: 0 var(--details-btn-horizontal-padding);
+  margin: 0 0.5rem;
   background-color: transparent;
   border: none;
-  height: var(--delete-btn-dimensions);
-  width: var(--delete-btn-dimensions);
+  height: var(--move-btn-dimensions);
+  width: var(--move-btn-dimensions);
   align-items: center;
   justify-content: center;
   border-radius: 0.3em;
 }
 
-.BoardCard__delete-btn:hover {
-  color: rgb(210, 0, 0);
+.BoardCard__move-btn:hover {
   background-color: rgb(0, 0, 0, 0.1);
 }
 
-.delete-btn-icon {
+.BoardCard__move-icon {
   font-size: 0.8rem;
 }
 
@@ -45,10 +44,7 @@
   background-color: white;
   border: none;
   border-radius: 0.3em;
-  padding: 0.3em var(--details-btn-horizontal-padding);
-  padding-right: calc(
-    var(--details-btn-horizontal-padding) + var(--delete-btn-dimensions)
-  );
+  padding: 0.3em 0.8rem;
   box-shadow: 0 1px 1px 1px rgb(0, 0, 0, 0.1);
   text-align: left;
 }
@@ -56,4 +52,5 @@
 .BoardCard__title {
   font-size: 0.9rem;
   line-height: 1.3em;
+  width: 200px;
 }

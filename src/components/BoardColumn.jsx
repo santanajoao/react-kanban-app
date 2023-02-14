@@ -24,47 +24,52 @@ class BoardColumn extends Component {
   };
 
   submitHandler = () => {
-    const { id, dispatch } = this.props;
+    const { index, dispatch } = this.props;
     const { newCardName } = this.state;
     this.setState({ newCardName: '' });
-    dispatch(addCard(id, newCardName));
+    dispatch(addCard(index, newCardName));
   };
 
   render() {
-    const { cards, title, id, dispatch } = this.props;
+    const { cards, title, index, dispatch, length } = this.props;
     const { newCardName } = this.state;
     return (
       <div className="BoardColumn">
         <header className="BoardColumn__header">
           <EditableTitle
             title={title}
-            onEnter={(newTitle) => dispatch(setColumnTitle({ id, newTitle }))}
+            onEnter={(newTitle) =>
+              dispatch(setColumnTitle({ index, newTitle }))
+            }
             blockClassName="BoardColumn"
           />
 
           <div className="BoardColumn__btns-wrapper">
-            <div className="BoardColumn__movement-btns-wrapper">
-              <button
-                type="button"
-                title="Mover para a esquerda"
-                onClick={() => dispatch(moveColumn(id, -1))}
-                className="BoardColumn__movement-btn"
-              >
-                <AiOutlineLeft className="BoardColumn__movement-icon" />
-              </button>
-              <button
-                type="button"
-                title="Mover para a direita"
-                onClick={() => dispatch(moveColumn(id, 1))}
-                className="BoardColumn__movement-btn"
-              >
-                <AiOutlineRight className="BoardColumn__movement-icon" />
-              </button>
-            </div>
+            {length > 1 && (
+              <div className="BoardColumn__movement-btns-wrapper">
+                <button
+                  type="button"
+                  title="Mover para a esquerda"
+                  onClick={() => dispatch(moveColumn(index, -1))}
+                  className="BoardColumn__movement-btn"
+                >
+                  <AiOutlineLeft className="BoardColumn__movement-icon" />
+                </button>
+                <button
+                  type="button"
+                  title="Mover para a direita"
+                  onClick={() => dispatch(moveColumn(index, 1))}
+                  className="BoardColumn__movement-btn"
+                >
+                  <AiOutlineRight className="BoardColumn__movement-icon" />
+                </button>
+              </div>
+            )}
+
             <button
               type="button"
               title="Apagar coluna"
-              onClick={() => dispatch(removeColumn(id))}
+              onClick={() => dispatch(removeColumn(index))}
               className="BoardColumn__delete-btn"
             >
               <FaTrashAlt className="BoardColumn__delete-icon" />
@@ -73,9 +78,9 @@ class BoardColumn extends Component {
         </header>
 
         <ol className="BoardColumn__cards-list">
-          {cards.map(({ id: cardID, title }) => (
-            <li key={cardID}>
-              <BoardCard title={title} id={cardID} columnID={id} />
+          {cards.map(({ id, title }, cardIndex) => (
+            <li key={id}>
+              <BoardCard title={title} index={cardIndex} columnIndex={index} />
             </li>
           ))}
         </ol>
@@ -104,7 +109,7 @@ BoardColumn.propTypes = {
     })
   ).isRequired,
   title: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 

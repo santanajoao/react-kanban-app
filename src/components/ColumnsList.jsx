@@ -8,11 +8,17 @@ import '../styles/ColumnsList.css';
 class ColumnsList extends Component {
   render() {
     const { columns } = this.props;
+    const { length } = columns;
     return (
       <ol className="ColumnsList">
-        {columns.map(({ id, title, cards }) => (
+        {columns.map(({ id, title, cards }, index) => (
           <li key={id}>
-            <BoardColumn title={title} cards={cards} id={id} />
+            <BoardColumn
+              title={title}
+              cards={cards}
+              index={index}
+              length={length}
+            />
           </li>
         ))}
         <li>
