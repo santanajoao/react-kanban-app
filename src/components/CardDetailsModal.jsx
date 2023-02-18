@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GrClose } from 'react-icons/gr';
 import { closeModal, setCardTitle, setCardDescription } from '../redux/actions';
 import EditableTitle from './EditableTitle';
-import '../styles/Modal.css';
+import '../styles/CardDetailsModal.css';
 
-function Modal() {
+function CardDetailsModal() {
   const { editingColumnIndex, editingCardIndex, columns } = useSelector(
     (state) => state.kanban
   );
@@ -29,48 +29,51 @@ function Modal() {
   }
 
   return (
-    <div className="Modal__overlay">
-      <div className="Modal">
+    <div className="CardDetailsModal__overlay">
+      <div className="CardDetailsModal">
         <button
           onClick={() => dispatch(closeModal())}
-          className="Modal__close-btn"
+          className="CardDetailsModal__close-btn"
         >
-          <GrClose className="Modal__close-icon" />
+          <GrClose className="CardDetailsModal__close-icon" />
         </button>
 
-        <div className="Modal__title-wrapper">
+        <div className="CardDetailsModal__title-wrapper">
           <EditableTitle
             title={cardTitle}
             onEnter={(title) => dispatch(setCardTitle(title))}
-            blockClassName="Modal"
+            blockClassName="CardDetailsModal"
           />
-          <p className="Modal__column-paragraph">
-            Na coluna <span className="Modal__column-title">{columnTitle}</span>
+          <p className="CardDetailsModal__column-paragraph">
+            Na coluna{' '}
+            <span className="CardDetailsModal__column-title">
+              {columnTitle}
+            </span>
           </p>
         </div>
 
-        <div className="Modal__description-wrapper">
-          <h2 className="Modal__description-title">Descrição</h2>
+        <div className="CardDetailsModal__description-wrapper">
+          <h2 className="CardDetailsModal__description-title">Descrição</h2>
           {editing ? (
-            <form className="Modal__description-form">
+            <form className="CardDetailsModal__description-form">
               <textarea
                 value={description}
                 onChange={({ target }) => setDescription(target.value)}
-                className="Modal__description-input"
+                className="CardDetailsModal__description-input"
                 autoFocus
               />
-              <div className="Modal__form-btns-wrapper">
+              <div className="CardDetailsModal__form-btns-wrapper">
                 <button
                   type="button"
                   onClick={saveEditing}
-                  className="Modal__form-btn Modal__save-btn"
+                  className="CardDetailsModal__form-btn CardDetailsModal__save-btn"
                 >
                   Salvar
                 </button>
                 <button
                   type="button"
                   onClick={cancelEditing}
-                  className="Modal__form-btn"
+                  className="CardDetailsModal__form-btn"
                 >
                   Cancelar
                 </button>
@@ -79,9 +82,9 @@ function Modal() {
           ) : (
             <button
               onClick={() => setEditing(true)}
-              className="Modal__edit-btn"
+              className="CardDetailsModal__edit-btn"
             >
-              <p className="Modal__description">{description}</p>
+              <p className="CardDetailsModal__description">{description}</p>
             </button>
           )}
         </div>
@@ -90,4 +93,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default CardDetailsModal;

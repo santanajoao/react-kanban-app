@@ -1,4 +1,4 @@
-.Modal__overlay {
+.CardDetailsModal__overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -9,7 +9,7 @@
   z-index: 4;
 }
 
-.Modal {
+.CardDetailsModal {
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
@@ -21,7 +21,7 @@
   border-radius: 0.3rem;
 }
 
-.Modal__close-btn {
+.CardDetailsModal__close-btn {
   width: 2.3rem;
   display: flex;
   align-items: center;
@@ -36,22 +36,22 @@
   margin: 0.5rem;
 }
 
-.Modal__close-btn:hover {
+.CardDetailsModal__close-btn:hover {
   background-color: lightgray;
   cursor: pointer;
 }
 
-.Modal__close-icon {
+.CardDetailsModal__close-icon {
   font-size: 1rem;
 }
 
-.Modal__title-wrapper {
+.CardDetailsModal__title-wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
 
-.Modal__editable-title {
+.CardDetailsModal__editable-title {
   font-size: 1.4rem;
   font-weight: 700;
   padding: 0.05em 0;
@@ -59,7 +59,7 @@
   word-break: break-all;
 }
 
-.Modal__editable-title-input {
+.CardDetailsModal__editable-title-input {
   font-size: 1.4rem;
   font-weight: 700;
   border-radius: 0.1em;
@@ -68,36 +68,36 @@
   max-width: 315px;
 }
 
-.Modal__editable-title-input:focus {
+.CardDetailsModal__editable-title-input:focus {
   border: 1px solid transparent;
   outline: 2px solid #0079bf;
 }
 
-.Modal__column-paragraph {
+.CardDetailsModal__column-paragraph {
   font-size: 0.9rem;
 }
 
-.Modal__column-title {
+.CardDetailsModal__column-title {
   text-decoration: underline;
 }
 
-.Modal__description-title {
+.CardDetailsModal__description-title {
   font-size: 1.1rem;
   font-weight: 700;
 }
 
-.Modal__edit-btn {
+.CardDetailsModal__edit-btn {
   border: none;
   background-color: transparent;
   text-align: left;
   cursor: pointer;
 }
 
-.Modal__edit-btn:hover {
+.CardDetailsModal__edit-btn:hover {
   background-color: rgb(0, 0, 0, 0.05);
 }
 
-.Modal__description {
+.CardDetailsModal__description {
   font-size: 0.9rem;
   background-color: rgb(0, 0, 0, 0.2);
   padding: 0.6em;
@@ -105,24 +105,24 @@
   min-height: 4em;
 }
 
-.Modal__description-wrapper {
+.CardDetailsModal__description-wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.Modal__description-form {
+.CardDetailsModal__description-form {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-.Modal__form-btns-wrapper {
+.CardDetailsModal__form-btns-wrapper {
   display: flex;
   gap: 0.4rem;
 }
 
-.Modal__description-input {
+.CardDetailsModal__description-input {
   min-height: 4em;
   font-size: 0.9rem;
   resize: none;
@@ -132,12 +132,12 @@
   font-family: sans-serif;
 }
 
-.Modal__description-input:focus {
+.CardDetailsModal__description-input:focus {
   outline: 1px solid #0079bf;
   border: 1px solid #0079bf;
 }
 
-.Modal__form-btn {
+.CardDetailsModal__form-btn {
   cursor: pointer;
   font-size: 0.85rem;
   padding: 0.6em 0.9em;
@@ -146,11 +146,11 @@
   background-color: white;
 }
 
-.Modal__form-btn:hover {
+.CardDetailsModal__form-btn:hover {
   filter: brightness(0.93);
 }
 
-.Modal__save-btn {
+.CardDetailsModal__save-btn {
   background-color: #0079bf;
   color: white;
 }

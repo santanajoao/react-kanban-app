@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import ColumnsList from './components/ColumnsList';
 import Header from './components/Header';
-import Modal from './components/Modal';
+import CardDetailsModal from './components/CardDetailsModal';
 import './styles/App.css';
 
 // mover o cartão para cima ou baixo
@@ -19,7 +19,7 @@ function App() {
   const { showModal } = useSelector((state) => state.kanban);
   return (
     <div className="App">
-      {showModal && <Modal />}
+      {showModal && <CardDetailsModal />}
       <Header />
       <ColumnsList />
     </div>
