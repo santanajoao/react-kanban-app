@@ -1,42 +1,30 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import '../styles/AddBoardColumn.css';
-import FormButton from './FormButton';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { addColumn } from '../redux/actions';
+import FormButton from './FormButton';
+import '../styles/AddBoardColumn.css';
 
-class AddBoardColumn extends Component {
-  state = {
-    columnTitle: '',
-  };
+export default function AddBoardColumn() {
+  const INITIAL_TITLE = '';
+  const [columnTitle, setColumnTitle] = useState(INITIAL_TITLE);
+  const dispatch = useDispatch();
 
-  handleInputChange = (event) => {
-    const { value } = event.target;
-    this.setState({ columnTitle: value });
-  };
-
-  addColumn = () => {
-    const { columnTitle } = this.state;
-    const { dispatch } = this.props;
+  function add() {
     dispatch(addColumn(columnTitle));
-    this.setState({ columnTitle: '' });
-  };
-
-  render() {
-    const { columnTitle } = this.state;
-    return (
-      <div className="AddBoardColumn">
-        <FormButton
-          submitHandler={this.addColumn}
-          inputChangeHandler={this.handleInputChange}
-          inputValue={columnTitle}
-          blockClassName="AddBoardColumn"
-          inputPlaceholder="Insira o título da coluna"
-          openBtnText="Adicionar uma coluna"
-          submitBtnText="Adicionar coluna"
-        />
-      </div>
-    );
+    setColumnTitle(INITIAL_TITLE);
   }
-}
 
-export default connect()(AddBoardColumn);
+  return (
+    <div className="AddBoardColumn">
+      <FormButton
+        submitHandler={add}
+        inputChangeHandler={({ target }) => setColumnTitle(target.value)}
+        inputValue={columnTitle}
+        blockClassName="AddBoardColumn"
+        inputPlaceholder="Insira o título da coluna"
+        openBtnText="Adicionar uma coluna"
+        submitBtnText="Adicionar coluna"
+      />
+    </div>
+  );
+}

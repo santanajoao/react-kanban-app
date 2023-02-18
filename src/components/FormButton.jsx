@@ -1,83 +1,69 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { GrFormClose } from 'react-icons/gr';
 import { BsPlusLg } from 'react-icons/bs';
+import { useState } from 'react';
 
-export default class FormButton extends Component {
-  state = {
-    isAdding: false,
-  };
+export default function FormButton(props) {
+  const [isAdding, setIsAdding] = useState(false);
 
-  handleAddingStatus = () => {
-    this.setState(({ isAdding }) => ({ isAdding: !isAdding }));
-  };
-
-  handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
+    setIsAdding(false);
+    props.submitHandler();
+  }
 
-    const { submitHandler } = this.props;
-    this.setState({ isAdding: false });
-    submitHandler();
-  };
+  function handleIsAdding() {
+    setIsAdding(!isAdding);
+  }
 
-  render() {
-    const {
-      blockClassName,
-      inputPlaceholder,
-      openBtnText,
-      submitBtnText,
-      inputChangeHandler,
-      inputValue,
-    } = this.props;
-    const { isAdding } = this.state;
+  const {
+    blockClassName,
+    inputPlaceholder,
+    openBtnText,
+    submitBtnText,
+    inputChangeHandler,
+    inputValue,
+  } = props;
+
+  if (isAdding) {
     return (
-      <>
-        {isAdding ? (
-          <form
-            onSubmit={this.handleSubmit}
-            className={`${blockClassName}__form`}
-          >
-            <input
-              value={inputValue}
-              type="text"
-              placeholder={inputPlaceholder}
-              onChange={inputChangeHandler}
-              name="inputValue"
-              className={`${blockClassName}__form-input`}
-              autoFocus
-            />
-            <div className={`${blockClassName}__btns-wrapper`}>
-              <button
-                type="submit"
-                disabled={!inputValue}
-                className={`${blockClassName}__submit-btn`}
-              >
-                {submitBtnText}
-              </button>
-              <button
-                type="button"
-                title="Fechar"
-                onClick={this.handleAddingStatus}
-                className={`${blockClassName}__close-form-btn`}
-              >
-                <GrFormClose className="close-form-icon" />
-              </button>
-            </div>
-          </form>
-        ) : (
+      <form onSubmit={handleSubmit} className={`${blockClassName}__form`}>
+        <input
+          value={inputValue}
+          type="text"
+          placeholder={inputPlaceholder}
+          onChange={inputChangeHandler}
+          name="inputValue"
+          className={`${blockClassName}__form-input`}
+          autoFocus
+        />
+        <div className={`${blockClassName}__btns-wrapper`}>
           <button
-            onClick={this.handleAddingStatus}
-            className={`${blockClassName}__plus-btn`}
+            type="submit"
+            disabled={!inputValue}
+            className={`${blockClassName}__submit-btn`}
           >
-            <BsPlusLg className={`${blockClassName}__add-icon`} />
-            <span className={` ${blockClassName}__plus-btn-text`}>
-              {openBtnText}
-            </span>
+            {submitBtnText}
           </button>
-        )}
-      </>
+          <button
+            type="button"
+            title="Fechar"
+            onClick={handleIsAdding}
+            className={`${blockClassName}__close-form-btn`}
+          >
+            <GrFormClose className="close-form-icon" />
+          </button>
+        </div>
+      </form>
     );
   }
+
+  return (
+    <button onClick={handleIsAdding} className={`${blockClassName}__plus-btn`}>
+      <BsPlusLg className={`${blockClassName}__add-icon`} />
+      <span className={` ${blockClassName}__plus-btn-text`}>{openBtnText}</span>
+    </button>
+  );
 }
 
 FormButton.propTypes = {

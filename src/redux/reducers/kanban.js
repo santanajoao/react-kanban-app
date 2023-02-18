@@ -9,14 +9,15 @@ import {
   // removeCard,
   closeModal,
   openModal,
+  setCardTitle,
+  setCardDescription,
 } from '../actions';
 
 const initialState = {
   columns: [],
   showModal: false,
-  editingCardName: '',
-  editingCardDescription: '',
-  editingCardColumnName: '',
+  editingCardIndex: 0,
+  editingColumnIndex: 0,
 };
 
 const kanbanReducer = createReducer(initialState, (builder) => {
@@ -62,12 +63,19 @@ const kanbanReducer = createReducer(initialState, (builder) => {
     })
     .addCase(openModal, (state, action) => {
       const { columnIndex, cardIndex } = action.payload;
-      const column = state.columns[columnIndex];
-      const { title, description } = column.cards[cardIndex];
-      state.editingCardName = title;
-      state.editingCardDescription = description;
-      state.editingCardColumnName = column.title;
+      state.editingColumnIndex = columnIndex;
+      state.editingCardIndex = cardIndex;
       state.showModal = true;
+    })
+    .addCase(setCardTitle, (state, action) => {
+      const column = state.columns[state.editingColumnIndex];
+      const card = column.cards[state.editingCardIndex];
+      card.title = action.payload;
+    })
+    .addCase(setCardDescription, (state, action) => {
+      const column = state.columns[state.editingColumnIndex];
+      const card = column.cards[state.editingCardIndex];
+      card.description = action.payload;
     });
 });
 

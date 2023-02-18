@@ -52,3 +52,7 @@ export const openModal = createAction(
     },
   })
 );
+
+export const setCardTitle = createAction('setCardTitle');
+
+export const setCardDescription = createAction('setCardDescription');
