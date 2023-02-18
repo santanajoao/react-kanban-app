@@ -6,18 +6,21 @@ import '../styles/Modal.css';
 import EditableTitle from './EditableTitle';
 
 function Modal() {
-  const { editingCardDescription, editingCardName, editingCardColumnName } =
-    useSelector((state) => state.kanban);
+  const { editingColumnIndex, editingCardIndex, columns } = useSelector(
+    (state) => state.kanban
+  );
 
+  const { title: columnTitle, cards } = columns[editingColumnIndex];
+  const { title: cardTitle, description: cardDescription } =
+    cards[editingCardIndex];
   const [editing, setEditing] = useState(false);
-  const [description, setDescription] = useState(editingCardDescription);
-  // const [cardTitle, setCardTitle] = useState(editingCardName);
+  const [description, setDescription] = useState(cardDescription);
 
   const dispatch = useDispatch();
 
   function cancelEditing() {
     setEditing(false);
-    setDescription(editingCardDescription);
+    setDescription(cardDescription);
   }
 
   return (
@@ -31,10 +34,9 @@ function Modal() {
         </button>
 
         <div className="Modal__title-wrapper">
-          <EditableTitle title={editingCardName} blockClassName="Modal" />
+          <EditableTitle title={cardTitle} blockClassName="Modal" />
           <p className="Modal__column-paragraph">
-            Na coluna{' '}
-            <span className="Modal__column-title">{editingCardColumnName}</span>
+            Na coluna <span className="Modal__column-title">{columnTitle}</span>
           </p>
         </div>
 
@@ -67,7 +69,7 @@ function Modal() {
               onClick={() => setEditing(true)}
               className="Modal__edit-btn"
             >
-              <p className="Modal__description">{description}</p>
+              <p className="Modal__description">{cardDescription}</p>
             </button>
           )}
         </div>
