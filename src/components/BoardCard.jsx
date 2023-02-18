@@ -31,6 +31,5 @@ export default function BoardCard(props) {
 BoardCard.propTypes = {
   title: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired,
   columnIndex: PropTypes.number.isRequired,
 };

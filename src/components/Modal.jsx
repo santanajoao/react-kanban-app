@@ -57,6 +57,7 @@ function Modal() {
                 value={description}
                 onChange={({ target }) => setDescription(target.value)}
                 className="Modal__description-input"
+                autoFocus
               />
               <div className="Modal__form-btns-wrapper">
                 <button
