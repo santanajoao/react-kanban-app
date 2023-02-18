@@ -10,6 +10,7 @@ import {
   closeModal,
   openModal,
   setCardTitle,
+  setCardDescription,
 } from '../actions';
 
 const initialState = {
@@ -70,6 +71,11 @@ const kanbanReducer = createReducer(initialState, (builder) => {
       const column = state.columns[state.editingColumnIndex];
       const card = column.cards[state.editingCardIndex];
       card.title = action.payload;
+    })
+    .addCase(setCardDescription, (state, action) => {
+      const column = state.columns[state.editingColumnIndex];
+      const card = column.cards[state.editingCardIndex];
+      card.description = action.payload;
     });
 });
 

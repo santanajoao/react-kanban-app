@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GrClose } from 'react-icons/gr';
-import { closeModal, setCardTitle } from '../redux/actions';
+import { closeModal, setCardTitle, setCardDescription } from '../redux/actions';
 import EditableTitle from './EditableTitle';
 import '../styles/Modal.css';
 
@@ -21,6 +21,11 @@ function Modal() {
   function cancelEditing() {
     setEditing(false);
     setDescription(cardDescription);
+  }
+
+  function saveEditing() {
+    dispatch(setCardDescription(description));
+    setEditing(false);
   }
 
   return (
@@ -50,11 +55,13 @@ function Modal() {
             <form className="Modal__description-form">
               <textarea
                 value={description}
+                onChange={({ target }) => setDescription(target.value)}
                 className="Modal__description-input"
               />
               <div className="Modal__form-btns-wrapper">
                 <button
                   type="button"
+                  onClick={saveEditing}
                   className="Modal__form-btn Modal__save-btn"
                 >
                   Salvar
@@ -73,7 +80,7 @@ function Modal() {
               onClick={() => setEditing(true)}
               className="Modal__edit-btn"
             >
-              <p className="Modal__description">{cardDescription}</p>
+              <p className="Modal__description">{description}</p>
             </button>
           )}
         </div>
