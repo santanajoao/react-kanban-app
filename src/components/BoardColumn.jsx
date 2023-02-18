@@ -15,13 +15,14 @@ import { FaTrashAlt } from 'react-icons/fa';
 import '../styles/BoardColumn.css';
 
 function BoardColumn(props) {
-  const [newCardName, setNewCardName] = useState('');
+  const INITIAL_CARD_NAME = '';
+  const [newCardName, setNewCardName] = useState(INITIAL_CARD_NAME);
   const { title, cards, index, length } = props;
   const dispatch = useDispatch();
 
   function submitHandler() {
     dispatch(addCard(index, newCardName));
-    setNewCardName('');
+    setNewCardName(INITIAL_CARD_NAME);
   }
 
   return (
