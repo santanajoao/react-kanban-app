@@ -20,8 +20,8 @@ function BoardColumn(props) {
   const dispatch = useDispatch();
 
   function submitHandler() {
+    dispatch(addCard(index, newCardName));
     setNewCardName('');
-    dispatch(addCard(index, title));
   }
 
   return (
