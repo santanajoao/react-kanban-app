@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiMoveHorizontal } from 'react-icons/bi';
-import { openModal } from '../redux/actions';
-import '../styles/BoardCard.css';
+import { openModal } from '../../redux/actions';
+import './style.css';
 
 export default function BoardCard(props) {
   const { title, columnIndex, index } = props;

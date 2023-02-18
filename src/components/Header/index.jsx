@@ -1,5 +1,5 @@
-import EditableTitle from './EditableTitle';
-import '../styles/Header.css';
+import EditableTitle from '../EditableTitle';
+import './style.css';
 
 export default function Header() {
   return (

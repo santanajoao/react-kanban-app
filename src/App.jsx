@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import ColumnsList from './components/ColumnsList';
 import Header from './components/Header';
 import CardDetailsModal from './components/CardDetailsModal';
-import './styles/App.css';
+import './App.css';
 
 // mover o cartão para cima ou baixo
 // mover o cartão para outras colunas ícone BiMoveHorizontal

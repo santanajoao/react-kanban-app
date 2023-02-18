@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import EditableTitle from './EditableTitle';
-import FormButton from './FormButton';
-import BoardCard from './BoardCard';
+import EditableTitle from '../EditableTitle';
+import FormButton from '../FormButton';
+import BoardCard from '../BoardCard';
 import {
   addCard,
   moveColumn,
   removeColumn,
   setColumnTitle,
-} from '../redux/actions';
+} from '../../redux/actions';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { FaTrashAlt } from 'react-icons/fa';
-import '../styles/BoardColumn.css';
+import './style.css';
 
 function BoardColumn(props) {
   const INITIAL_CARD_NAME = '';

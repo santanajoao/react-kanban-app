@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GrClose } from 'react-icons/gr';
-import { closeModal, setCardTitle, setCardDescription } from '../redux/actions';
-import EditableTitle from './EditableTitle';
-import '../styles/CardDetailsModal.css';
+import {
+  closeModal,
+  setCardTitle,
+  setCardDescription,
+} from '../../redux/actions';
+import EditableTitle from '../EditableTitle';
+import './style.css';
 
 function CardDetailsModal() {
   const { editingColumnIndex, editingCardIndex, columns } = useSelector(

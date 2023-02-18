@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import BoardColumn from './BoardColumn';
-import AddBoardColumn from './AddBoardColumn';
-import '../styles/ColumnsList.css';
+import BoardColumn from '../BoardColumn';
+import AddBoardColumn from '../AddBoardColumn';
+import './style.css';
 
 export default function ColumnsList() {
   const { columns } = useSelector((state) => state.kanban);

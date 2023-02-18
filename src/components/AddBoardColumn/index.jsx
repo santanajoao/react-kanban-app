@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addColumn } from '../redux/actions';
-import FormButton from './FormButton';
-import '../styles/AddBoardColumn.css';
+import { addColumn } from '../../redux/actions';
+import FormButton from '../FormButton';
+import './style.css';
 
 export default function AddBoardColumn() {
   const INITIAL_TITLE = '';
