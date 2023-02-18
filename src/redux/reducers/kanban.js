@@ -7,15 +7,19 @@ import {
   moveColumn,
   addCard,
   // removeCard,
-  closeModal,
-  openModal,
+  closeDetails,
+  openDetails,
   setCardTitle,
+  openMove,
+  closeMove,
   setCardDescription,
+  moveCard,
 } from '../actions';
 
 const initialState = {
   columns: [],
-  showModal: false,
+  detailsModal: false,
+  moveModal: false,
   editingCardIndex: 0,
   editingColumnIndex: 0,
 };
@@ -58,14 +62,14 @@ const kanbanReducer = createReducer(initialState, (builder) => {
         columnIndex > newIndex ? columnIndex + 1 : columnIndex;
       state.columns.splice(newCurrentIndex, 1);
     })
-    .addCase(closeModal, (state) => {
-      state.showModal = false;
+    .addCase(closeDetails, (state) => {
+      state.detailsModal = false;
     })
-    .addCase(openModal, (state, action) => {
+    .addCase(openDetails, (state, action) => {
       const { columnIndex, cardIndex } = action.payload;
       state.editingColumnIndex = columnIndex;
       state.editingCardIndex = cardIndex;
-      state.showModal = true;
+      state.detailsModal = true;
     })
     .addCase(setCardTitle, (state, action) => {
       const column = state.columns[state.editingColumnIndex];
@@ -76,6 +80,23 @@ const kanbanReducer = createReducer(initialState, (builder) => {
       const column = state.columns[state.editingColumnIndex];
       const card = column.cards[state.editingCardIndex];
       card.description = action.payload;
+    })
+    .addCase(openMove, (state, action) => {
+      const { columnIndex, cardIndex } = action.payload;
+      state.editingColumnIndex = columnIndex;
+      state.editingCardIndex = cardIndex;
+      state.moveModal = true;
+    })
+    .addCase(closeMove, (state) => {
+      state.moveModal = false;
+    })
+    .addCase(moveCard, (state, action) => {
+      const initialColumn = state.columns[state.editingColumnIndex];
+      const card = initialColumn.cards[state.editingCardIndex];
+      initialColumn.cards.splice(state.editingCardIndex, 1);
+      const targetColumn = state.columns[action.payload];
+      targetColumn.cards = [...targetColumn.cards, card];
+      state.moveModal = false;
     });
 });
 

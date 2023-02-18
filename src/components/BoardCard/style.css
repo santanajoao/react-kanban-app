@@ -53,4 +53,5 @@
   font-size: 0.9rem;
   line-height: 1.3em;
   width: 200px;
+  word-break: break-all;
 }

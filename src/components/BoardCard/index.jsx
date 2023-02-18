@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiMoveHorizontal } from 'react-icons/bi';
-import { openModal } from '../../redux/actions';
+import { openDetails, openMove } from '../../redux/actions';
 import './style.css';
 
 export default function BoardCard(props) {
@@ -12,14 +12,14 @@ export default function BoardCard(props) {
     <div className="BoardCard">
       <button
         title="Mover cartão para outra coluna"
-        onClick={() => dispatch({ type: 'NONE' })}
+        onClick={() => dispatch(openMove(columnIndex, index))}
         className="BoardCard__move-btn"
       >
         <BiMoveHorizontal className="BoardCard__move-icon" />
       </button>
 
       <button
-        onClick={() => dispatch(openModal(columnIndex, index))}
+        onClick={() => dispatch(openDetails(columnIndex, index))}
         className="BoardCard__details-btn"
       >
         <h3 className="BoardCard__title">{title}</h3>
