@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GrClose } from 'react-icons/gr';
-import { closeModal } from '../redux/actions';
-import '../styles/Modal.css';
+import { closeModal, setCardTitle } from '../redux/actions';
 import EditableTitle from './EditableTitle';
+import '../styles/Modal.css';
 
 function Modal() {
   const { editingColumnIndex, editingCardIndex, columns } = useSelector(
@@ -34,7 +34,11 @@ function Modal() {
         </button>
 
         <div className="Modal__title-wrapper">
-          <EditableTitle title={cardTitle} blockClassName="Modal" />
+          <EditableTitle
+            title={cardTitle}
+            onEnter={(title) => dispatch(setCardTitle(title))}
+            blockClassName="Modal"
+          />
           <p className="Modal__column-paragraph">
             Na coluna <span className="Modal__column-title">{columnTitle}</span>
           </p>
