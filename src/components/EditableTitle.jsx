@@ -1,54 +1,42 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-class EditableTitle extends Component {
-  state = {
-    editingTitleText: false,
-    title: this.props.title,
-  };
+export default function EditableTitle(props) {
+  const { onEnter, blockClassName } = props;
+  const [editing, setEditing] = useState(false);
+  const [title, setTitle] = useState(props.title);
 
-  handleTitleTextClick = () => this.setState({ editingTitleText: true });
-
-  handleTitleChange = ({ target }) => {
-    this.setState({ title: target.value });
-  };
-
-  handleInputEnter = ({ key, target: { value } }) => {
-    const { onEnter } = this.props;
+  function handleInputEnter({ key, target: { value } }) {
     if (key === 'Enter' && value) {
-      this.setState({ editingTitleText: false });
+      setEditing(false);
       onEnter && onEnter(value);
     }
-  };
+  }
 
-  render() {
-    const { editingTitleText, title } = this.state;
-    const { blockClassName } = this.props;
-    const titleTextInputStyle = { width: `${title.length + 2}ch` };
+  const titleTextInputStyle = { width: `${title.length + 2}ch` };
+  if (editing) {
     return (
-      <>
-        {editingTitleText ? (
-          <input
-            value={title}
-            type="text"
-            style={titleTextInputStyle}
-            onKeyDown={this.handleInputEnter}
-            onChange={this.handleTitleChange}
-            name="titleText"
-            className={`${blockClassName}__editable-title-input`}
-            autoFocus
-          />
-        ) : (
-          <h1
-            onClick={this.handleTitleTextClick}
-            className={`${blockClassName}__editable-title`}
-          >
-            {title}
-          </h1>
-        )}
-      </>
+      <input
+        value={title}
+        type="text"
+        style={titleTextInputStyle}
+        onKeyDown={handleInputEnter}
+        onChange={({ target }) => setTitle(target.value)}
+        name="titleText"
+        className={`${blockClassName}__editable-title-input`}
+        autoFocus
+      />
     );
   }
+
+  return (
+    <h1
+      onClick={() => setEditing(true)}
+      className={`${blockClassName}__editable-title`}
+    >
+      {title}
+    </h1>
+  );
 }
 
 EditableTitle.propTypes = {
@@ -60,5 +48,3 @@ EditableTitle.propTypes = {
 EditableTitle.defaultProps = {
   onEnter: () => {},
 };
-
-export default EditableTitle;

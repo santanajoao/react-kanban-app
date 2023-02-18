@@ -98,7 +98,7 @@ BoardColumn.propTypes = {
   ).isRequired,
   title: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  length: PropTypes.number.isRequired,
 };
 
 export default BoardColumn;

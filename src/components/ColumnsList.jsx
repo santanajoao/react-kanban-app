@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import BoardColumn from './BoardColumn';
 import AddBoardColumn from './AddBoardColumn';
 import '../styles/ColumnsList.css';
@@ -25,13 +24,3 @@ export default function ColumnsList() {
     </ol>
   );
 }
-
-ColumnsList.propTypes = {
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      cards: PropTypes.array.isRequired,
-    })
-  ).isRequired,
-};
