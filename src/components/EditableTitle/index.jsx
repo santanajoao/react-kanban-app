@@ -31,6 +31,7 @@ export default function EditableTitle(props) {
 
   return (
     <button
+      title="Editar título"
       onClick={() => setEditing(true)}
       className={`${blockClassName}__editable-title`}
     >

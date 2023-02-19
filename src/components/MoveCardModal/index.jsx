@@ -11,6 +11,7 @@ export default function MoveCardModal() {
   return (
     <ModalWrapper>
       <button
+        title="Fechar"
         onClick={() => dispatch(closeMove())}
         className={styles.close_button}
       >
@@ -23,6 +24,7 @@ export default function MoveCardModal() {
         {columns.map((column, index) => (
           <li key={column.id}>
             <button
+              title={`Mover para coluna ${column.title}`}
               onClick={() => dispatch(moveCard(index))}
               disabled={index === editingColumnIndex}
               className={styles.column_button}

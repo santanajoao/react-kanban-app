@@ -36,6 +36,7 @@ function CardDetailsModal() {
   return (
     <ModalWrapper>
       <button
+        title="Fechar"
         onClick={() => dispatch(closeDetails())}
         className="CardDetailsModal__close-btn"
       >
@@ -85,6 +86,7 @@ function CardDetailsModal() {
           <button
             onClick={() => setEditing(true)}
             className="CardDetailsModal__edit-btn"
+            title="Editar descrição"
           >
             <p className="CardDetailsModal__description">{description}</p>
           </button>
