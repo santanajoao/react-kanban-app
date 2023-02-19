@@ -1,0 +1,37 @@
+import { useSelector } from 'react-redux';
+import ModalWrapper from '../ModalWrapper';
+import { useDispatch } from 'react-redux';
+import { GrClose } from 'react-icons/gr';
+import styles from './style.module.css';
+import { closeMove, moveCard } from '../../redux/actions';
+
+export default function MoveCardModal() {
+  const { columns, editingColumnIndex } = useSelector((state) => state.kanban);
+  const dispatch = useDispatch();
+  return (
+    <ModalWrapper>
+      <button
+        onClick={() => dispatch(closeMove())}
+        className={styles.close_button}
+      >
+        <GrClose className={styles.close_icon} />
+      </button>
+      <p className={styles.message}>
+        Escolha para qual coluna o cartão será movido
+      </p>
+      <ol className={styles.list}>
+        {columns.map((column, index) => (
+          <li key={column.id}>
+            <button
+              onClick={() => dispatch(moveCard(index))}
+              disabled={index === editingColumnIndex}
+              className={styles.column_button}
+            >
+              {column.title}
+            </button>
+          </li>
+        ))}
+      </ol>
+    </ModalWrapper>
+  );
+}

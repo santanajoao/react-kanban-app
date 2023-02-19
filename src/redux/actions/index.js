@@ -41,9 +41,9 @@ export const addCard = createAction('addCard', (columnIndex, cardTitle) => ({
 //   },
 // }));
 
-export const closeModal = createAction('closeModal');
+export const closeDetails = createAction('closeModal');
 
-export const openModal = createAction(
+export const openDetails = createAction(
   'openModal',
   (columnIndex, cardIndex) => ({
     payload: {
@@ -56,3 +56,14 @@ export const openModal = createAction(
 export const setCardTitle = createAction('setCardTitle');
 
 export const setCardDescription = createAction('setCardDescription');
+
+export const closeMove = createAction('closeMove');
+
+export const openMove = createAction('openMove', (columnIndex, cardIndex) => ({
+  payload: {
+    columnIndex,
+    cardIndex,
+  },
+}));
+
+export const moveCard = createAction('moveCard');
