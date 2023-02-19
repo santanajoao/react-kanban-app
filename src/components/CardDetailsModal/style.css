@@ -34,6 +34,10 @@
   padding: 0.05em 0;
   max-width: 90%;
   word-break: break-all;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
 }
 
 .CardDetailsModal__editable-title-input {
@@ -43,6 +47,10 @@
   padding: 0 0.2em;
   border: 1px solid black;
   max-width: 315px;
+}
+
+.CardDetailsModal__editable-title:hover {
+  background-color: rgb(0, 0, 0, 0.1);
 }
 
 .CardDetailsModal__editable-title-input:focus {
