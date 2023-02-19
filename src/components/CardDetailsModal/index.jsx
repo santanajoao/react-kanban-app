@@ -29,7 +29,7 @@ function CardDetailsModal() {
   }
 
   function saveEditing() {
-    dispatch(setCardDescription(description));
+    dispatch(setCardDescription(description.trim()));
     setEditing(false);
   }
 
