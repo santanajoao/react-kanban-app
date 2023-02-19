@@ -52,11 +52,24 @@
   padding: 0.3em 0.8rem;
   box-shadow: 0 1px 1px 1px rgb(0, 0, 0, 0.1);
   text-align: left;
+  flex-direction: column;
+  display: flex;
+  gap: 0.2rem;
 }
 
 .BoardCard__title {
+  font-weight: 600;
   font-size: 0.9rem;
   line-height: 1.3em;
   width: 200px;
   word-break: break-all;
+}
+
+.BoardCard__footer {
+  width: 100%;
+}
+
+.BoardCard__footer-icon {
+  font-size: 1rem;
+  color: gray;
 }

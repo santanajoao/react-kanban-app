@@ -68,9 +68,14 @@ function BoardColumn(props) {
       </header>
 
       <ol className="BoardColumn__cards-list">
-        {cards.map(({ id, title }, cardIndex) => (
+        {cards.map(({ id, title, description }, cardIndex) => (
           <li key={id}>
-            <BoardCard title={title} index={cardIndex} columnIndex={index} />
+            <BoardCard
+              title={title}
+              index={cardIndex}
+              description={description}
+              columnIndex={index}
+            />
           </li>
         ))}
       </ol>

@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiMoveHorizontal } from 'react-icons/bi';
+import { BsTextLeft } from 'react-icons/bs';
 import { openDetails, openMove } from '../../redux/actions';
 import './style.css';
 
 export default function BoardCard(props) {
-  const { title, columnIndex, index } = props;
+  const { title, columnIndex, description, index } = props;
   const dispatch = useDispatch();
 
   return (
@@ -20,9 +21,16 @@ export default function BoardCard(props) {
 
       <button
         onClick={() => dispatch(openDetails(columnIndex, index))}
+        title="Ir para os detalhes do cartão"
         className="BoardCard__details-btn"
       >
-        <h3 className="BoardCard__title">{title}</h3>
+        <span className="BoardCard__title">{title}</span>
+
+        {description && (
+          <span className="BoardCard__footer">
+            <BsTextLeft className="BoardCard__footer-icon" />
+          </span>
+        )}
       </button>
     </div>
   );
