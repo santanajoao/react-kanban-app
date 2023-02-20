@@ -1,108 +1,53 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GrClose } from 'react-icons/gr';
-import {
-  closeDetails,
-  setCardTitle,
-  setCardDescription,
-  removeCard,
-} from '../../redux/actions';
-import EditableText from '../EditableText';
-import ModalWrapper from '../ModalWrapper';
+import CloseButton from './CloseButton';
+import { closeDetails, removeCard } from '../../redux/actions';
+import ModalOverlay from '../ModalOverlay';
 import styles from './style.module.css';
+import CardAndColumnTitles from './CardAndColumnTitles';
+import CardDescription from './CardDescription';
 
 function CardDetailsModal() {
   const { editingColumnIndex, editingCardIndex, columns } = useSelector(
     (state) => state.kanban
   );
 
-  const { title: columnTitle, cards } = columns[editingColumnIndex];
-  const { title: cardTitle, description: cardDescription } =
-    cards[editingCardIndex];
-  const [editing, setEditing] = useState(false);
-  const [description, setDescription] = useState(cardDescription);
+  const column = columns[editingColumnIndex];
+  const card = column.cards[editingCardIndex];
+
+  const [description, setDescription] = useState(card.description);
 
   const dispatch = useDispatch();
 
-  function cancelEditing() {
-    setEditing(false);
-    setDescription(cardDescription);
-  }
-
-  function saveEditing() {
-    dispatch(setCardDescription(description.trim()));
-    setEditing(false);
-  }
-
   return (
-    <ModalWrapper modalClassName={styles.modal}>
-      <button
-        title="Fechar"
-        onClick={() => dispatch(closeDetails())}
-        className={styles.close_button}
-      >
-        <GrClose className={styles.close_icon} />
-      </button>
+    <ModalOverlay>
+      <div className={styles.modal}>
+        <CloseButton onClick={() => dispatch(closeDetails())} />
 
-      <div className={styles.title_wrapper}>
-        <EditableText
+        <CardAndColumnTitles
           styles={styles}
-          title={cardTitle}
-          onEnter={(title) => dispatch(setCardTitle(title))}
+          cardTitle={card.title}
+          columnTitle={column.title}
         />
-        <p className={styles.column_title}>
-          Na coluna <span className={styles.underline}>{columnTitle}</span>
-        </p>
-      </div>
 
-      <div className={styles.description_wrapper}>
-        <h2 className={styles.description_heading}>Descrição</h2>
-        {editing ? (
-          <form className={styles.form}>
-            <textarea
-              value={description}
-              onChange={({ target }) => setDescription(target.value)}
-              className={styles.form_input}
-              autoFocus
-            />
-            <div className={styles.buttons_wrapper}>
-              <button
-                type="button"
-                onClick={saveEditing}
-                className={`${styles.form_button} ${styles.save_button}`}
-              >
-                Salvar
-              </button>
-              <button
-                type="button"
-                onClick={cancelEditing}
-                className={styles.form_button}
-              >
-                Cancelar
-              </button>
-            </div>
-          </form>
-        ) : (
+        <CardDescription
+          styles={styles}
+          initialDescription={card.description}
+          description={description}
+          setDescription={setDescription}
+        />
+
+        <div>
           <button
-            onClick={() => setEditing(true)}
-            className={styles.edit_button}
-            title="Editar descrição"
+            type="button"
+            onClick={() => dispatch(removeCard())}
+            className={styles.delete_button}
           >
-            <p className={styles.description}>{description}</p>
+            Deletar cartão
           </button>
-        )}
+        </div>
       </div>
-
-      <div>
-        <button
-          type="button"
-          onClick={() => dispatch(removeCard())}
-          className={styles.delete_button}
-        >
-          Deletar cartão
-        </button>
-      </div>
-    </ModalWrapper>
+    </ModalOverlay>
   );
 }
 

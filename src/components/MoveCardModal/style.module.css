@@ -1,5 +1,13 @@
 .modal {
   width: 430px;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  background-color: white;
+  padding: 2rem;
+  position: relative;
+  gap: 1.5rem;
+  border-radius: 0.3rem;
 }
 
 .close_button {

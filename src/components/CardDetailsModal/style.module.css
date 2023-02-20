@@ -1,29 +1,13 @@
 .modal {
   width: 400px;
-}
-
-.close_button {
-  width: 2.3rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.3rem;
-  border-radius: 50%;
-  border: none;
-  background-color: transparent;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-  margin: 0.5rem;
-}
-
-.close_button:hover {
-  background-color: lightgray;
-}
-
-.close_icon {
-  font-size: 1rem;
+  flex-direction: column;
+  font-family: sans-serif;
+  background-color: white;
+  padding: 2rem;
+  position: relative;
+  gap: 1.5rem;
+  border-radius: 0.3rem;
 }
 
 .title_wrapper {
@@ -147,7 +131,8 @@
 
 .delete_button {
   border: none;
-  background-color: rgb(255, 40, 40);
+  background-color: rgb(255, 0, 0);
+  opacity: 85%;
   font-size: 0.9rem;
   padding: 0.5em;
   cursor: pointer;
@@ -157,5 +142,5 @@
 }
 
 .delete_button:hover {
-  filter: brightness(0.9);
+  opacity: 100%;
 }
