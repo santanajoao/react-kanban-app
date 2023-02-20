@@ -128,13 +128,14 @@
 
 .edit_button {
   border: none;
-  background-color: rgb(0, 0, 0, 0.03);
+  background-color: rgb(0, 0, 0, 0.1);
   text-align: left;
   cursor: pointer;
+  border-radius: 0.2em;
 }
 
 .edit_button:hover {
-  background-color: rgb(0, 0, 0, 0.1);
+  background-color: rgb(0, 0, 0, 0.15);
 }
 
 .description {
@@ -142,4 +143,19 @@
   padding: 0.6em;
   border-radius: 0.2em;
   min-height: 4em;
+}
+
+.delete_button {
+  border: none;
+  background-color: rgb(255, 40, 40);
+  font-size: 0.9rem;
+  padding: 0.5em;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  border-radius: 0.1em;
+}
+
+.delete_button:hover {
+  filter: brightness(0.9);
 }

@@ -34,12 +34,7 @@ export const addCard = createAction('addCard', (columnIndex, cardTitle) => ({
   },
 }));
 
-// export const removeCard = createAction('removeCard', (columnID, cardID) => ({
-//   payload: {
-//     columnID,
-//     cardID,
-//   },
-// }));
+export const removeCard = createAction('removeCard');
 
 export const closeDetails = createAction('closeModal');
 

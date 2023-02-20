@@ -5,6 +5,7 @@ import {
   closeDetails,
   setCardTitle,
   setCardDescription,
+  removeCard,
 } from '../../redux/actions';
 import EditableText from '../EditableText';
 import ModalWrapper from '../ModalWrapper';
@@ -90,6 +91,16 @@ function CardDetailsModal() {
             <p className={styles.description}>{description}</p>
           </button>
         )}
+      </div>
+
+      <div>
+        <button
+          type="button"
+          onClick={() => dispatch(removeCard())}
+          className={styles.delete_button}
+        >
+          Deletar cartão
+        </button>
       </div>
     </ModalWrapper>
   );
