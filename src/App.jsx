@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import ColumnsList from './components/ColumnsList';
 import Header from './components/Header';
 import CardDetailsModal from './components/CardDetailsModal';
-import './App.css';
 import MoveCardModal from './components/MoveCardModal';
+import styles from './App.module.css';
 
 // mover o cartão para cima ou baixo
 // mover o cartão para outras colunas ícone BiMoveHorizontal
@@ -19,7 +19,7 @@ import MoveCardModal from './components/MoveCardModal';
 function App() {
   const { detailsModal, moveModal } = useSelector((state) => state.kanban);
   return (
-    <div className="App">
+    <div className={styles.app}>
       {detailsModal && <CardDetailsModal />}
       {moveModal && <MoveCardModal />}
       <Header />

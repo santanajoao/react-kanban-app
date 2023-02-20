@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import EditableTitle from '../EditableTitle';
+import EditableText from '../EditableText';
 import FormButton from '../FormButton';
 import BoardCard from '../BoardCard';
 import {
@@ -12,7 +12,7 @@ import {
 } from '../../redux/actions';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { FaTrashAlt } from 'react-icons/fa';
-import './style.css';
+import styles from './style.module.css';
 
 function BoardColumn(props) {
   const INITIAL_CARD_NAME = '';
@@ -26,32 +26,32 @@ function BoardColumn(props) {
   }
 
   return (
-    <div className="BoardColumn">
-      <header className="BoardColumn__header">
-        <EditableTitle
+    <div className={styles.board_column}>
+      <header className={styles.header}>
+        <EditableText
           title={title}
           onEnter={(newTitle) => dispatch(setColumnTitle({ index, newTitle }))}
-          blockClassName="BoardColumn"
+          styles={styles}
         />
 
-        <div className="BoardColumn__btns-wrapper">
+        <div className={styles.buttons_wrapper}>
           {length > 1 && (
-            <div className="BoardColumn__movement-btns-wrapper">
+            <div className={styles.movement_buttons_wrapper}>
               <button
                 type="button"
                 title="Mover para a esquerda"
                 onClick={() => dispatch(moveColumn(index, -1))}
-                className="BoardColumn__movement-btn"
+                className={styles.movement_button}
               >
-                <AiOutlineLeft className="BoardColumn__movement-icon" />
+                <AiOutlineLeft className={styles.movement_icon} />
               </button>
               <button
                 type="button"
                 title="Mover para a direita"
                 onClick={() => dispatch(moveColumn(index, 1))}
-                className="BoardColumn__movement-btn"
+                className={styles.movement_button}
               >
-                <AiOutlineRight className="BoardColumn__movement-icon" />
+                <AiOutlineRight className={styles.movement_icon} />
               </button>
             </div>
           )}
@@ -60,14 +60,14 @@ function BoardColumn(props) {
             type="button"
             title="Apagar coluna"
             onClick={() => dispatch(removeColumn(index))}
-            className="BoardColumn__delete-btn"
+            className={styles.delete_button}
           >
-            <FaTrashAlt className="BoardColumn__delete-icon" />
+            <FaTrashAlt className={styles.delete_icon} />
           </button>
         </div>
       </header>
 
-      <ol className="BoardColumn__cards-list">
+      <ol className={styles.card_list}>
         {cards.map(({ id, title, description }, cardIndex) => (
           <li key={id}>
             <BoardCard
@@ -80,9 +80,9 @@ function BoardColumn(props) {
         ))}
       </ol>
 
-      <footer className="BoardColumn__footer">
+      <footer>
         <FormButton
-          blockClassName="BoardColumn"
+          styles={styles}
           inputPlaceholder="Insira o título do cartão"
           openBtnText="Adicionar um cartão"
           submitBtnText="Adicionar cartão"

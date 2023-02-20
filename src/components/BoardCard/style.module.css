@@ -1,4 +1,4 @@
-.BoardCard {
+.board_card {
   --move-btn-dimensions: 1.4rem;
   --details-btn-horizontal-padding: 0.7rem;
   width: 100%;
@@ -7,15 +7,15 @@
   align-items: center;
 }
 
-.BoardCard:hover .BoardCard__details-btn {
+.board_card:hover .details_button {
   background-color: rgb(245, 245, 245);
 }
 
-.BoardCard:hover > .BoardCard__move-btn {
+.board_card:hover > .move_button {
   visibility: visible;
 }
 
-.BoardCard__move-btn {
+.move_button {
   display: flex;
   visibility: hidden;
   position: absolute;
@@ -31,19 +31,19 @@
   border-radius: 0.3em;
 }
 
-.BoardCard__move-btn:focus {
+.move_button:focus {
   outline: 2px solid black;
 }
 
-.BoardCard__move-btn:hover {
+.move_button:hover {
   background-color: rgb(0, 0, 0, 0.1);
 }
 
-.BoardCard__move-icon {
+.move_icon {
   font-size: 0.8rem;
 }
 
-.BoardCard__details-btn {
+.details_button {
   cursor: pointer;
   width: 100%;
   background-color: white;
@@ -57,7 +57,7 @@
   gap: 0.2rem;
 }
 
-.BoardCard__title {
+.title {
   font-weight: 600;
   font-size: 0.9rem;
   line-height: 1.3em;
@@ -65,11 +65,11 @@
   word-break: break-all;
 }
 
-.BoardCard__footer {
+footer {
   width: 100%;
 }
 
-.BoardCard__footer-icon {
+.footer_icon {
   font-size: 1rem;
   color: gray;
 }

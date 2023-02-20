@@ -17,7 +17,7 @@ export default function FormButton(props) {
   }
 
   const {
-    blockClassName,
+    styles,
     inputPlaceholder,
     openBtnText,
     submitBtnText,
@@ -27,21 +27,21 @@ export default function FormButton(props) {
 
   if (isAdding) {
     return (
-      <form onSubmit={handleSubmit} className={`${blockClassName}__form`}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           value={inputValue}
           type="text"
           placeholder={inputPlaceholder}
           onChange={inputChangeHandler}
           name="inputValue"
-          className={`${blockClassName}__form-input`}
+          className={styles.form__input}
           autoFocus
         />
-        <div className={`${blockClassName}__btns-wrapper`}>
+        <div className={styles.buttons_wrapper}>
           <button
             type="submit"
             disabled={!inputValue}
-            className={`${blockClassName}__submit-btn`}
+            className={styles.submit_button}
           >
             {submitBtnText}
           </button>
@@ -49,9 +49,9 @@ export default function FormButton(props) {
             type="button"
             title="Fechar"
             onClick={handleIsAdding}
-            className={`${blockClassName}__close-form-btn`}
+            className={styles.close_button}
           >
-            <GrFormClose className="close-form-icon" />
+            <GrFormClose className={styles.close_button__icon} />
           </button>
         </div>
       </form>
@@ -59,15 +59,14 @@ export default function FormButton(props) {
   }
 
   return (
-    <button onClick={handleIsAdding} className={`${blockClassName}__plus-btn`}>
-      <BsPlusLg className={`${blockClassName}__add-icon`} />
-      <span className={` ${blockClassName}__plus-btn-text`}>{openBtnText}</span>
+    <button onClick={handleIsAdding} className={styles.add_button}>
+      <BsPlusLg className={styles.add_button__icon} />
+      <span className={styles.add_button__text}>{openBtnText}</span>
     </button>
   );
 }
 
 FormButton.propTypes = {
-  blockClassName: PropTypes.string.isRequired,
   inputPlaceholder: PropTypes.string.isRequired,
   openBtnText: PropTypes.string.isRequired,
   submitBtnText: PropTypes.string.isRequired,

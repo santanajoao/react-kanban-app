@@ -1,10 +1,10 @@
-.AddBoardColumn {
+.add_board_column {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.AddBoardColumn__plus-btn {
+.add_button {
   background-color: rgb(255, 255, 255, 0.2);
   border-radius: 0.4rem;
   border: none;
@@ -17,19 +17,19 @@
   color: #fff;
 }
 
-.AddBoardColumn__plus-btn-text {
-  font-size: 0.9rem;
-}
-
-.AddBoardColumn__plus-btn:hover {
-  background-color: rgb(255, 255, 255, 0.3);
-}
-
-.AddBoardColumn__add-icon {
+.add_button__icon {
   font-size: 0.7rem;
 }
 
-.AddBoardColumn__form {
+.add_button__text {
+  font-size: 0.9rem;
+}
+
+.add_button:hover {
+  background-color: rgb(255, 255, 255, 0.3);
+}
+
+.form {
   background-color: #ebecf0;
   border-radius: 0.4em;
   padding: 0.4em;
@@ -38,7 +38,7 @@
   gap: 0.2rem;
 }
 
-.AddBoardColumn__form-input {
+.form__input {
   width: 100%;
   font-size: 0.9rem;
   padding: 0.4em;
@@ -46,13 +46,13 @@
   border: 2px solid skyblue;
 }
 
-.AddBoardColumn__btns-wrapper {
+.buttons_wrapper {
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
 
-.AddBoardColumn__submit-btn {
+.submit_button {
   background-color: #0079bf;
   color: white;
   font-weight: 600;
@@ -63,15 +63,15 @@
   border: none;
 }
 
-.AddBoardColumn__submit-btn:disabled {
+.submit_button:disabled {
   opacity: 60%;
 }
 
-.AddBoardColumn__submit-btn:hover {
+.submit_buttonn:hover {
   background-color: rgb(0, 130, 200);
 }
 
-.AddBoardColumn__close-form-btn {
+.close_button {
   display: flex;
   align-items: center;
   justify-content: center;

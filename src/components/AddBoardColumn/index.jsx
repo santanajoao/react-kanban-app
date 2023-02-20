@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addColumn } from '../../redux/actions';
 import FormButton from '../FormButton';
-import './style.css';
+import styles from './style.module.css';
 
 export default function AddBoardColumn() {
   const INITIAL_TITLE = '';
@@ -15,12 +15,12 @@ export default function AddBoardColumn() {
   }
 
   return (
-    <div className="AddBoardColumn">
+    <div className={styles.add_board_column}>
       <FormButton
         submitHandler={add}
         inputChangeHandler={({ target }) => setColumnTitle(target.value)}
         inputValue={columnTitle}
-        blockClassName="AddBoardColumn"
+        styles={styles}
         inputPlaceholder="Insira o título da coluna"
         openBtnText="Adicionar uma coluna"
         submitBtnText="Adicionar coluna"

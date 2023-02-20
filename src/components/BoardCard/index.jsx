@@ -3,32 +3,32 @@ import PropTypes from 'prop-types';
 import { BiMoveHorizontal } from 'react-icons/bi';
 import { BsTextLeft } from 'react-icons/bs';
 import { openDetails, openMove } from '../../redux/actions';
-import './style.css';
+import styles from './style.module.css';
 
 export default function BoardCard(props) {
   const { title, columnIndex, description, index } = props;
   const dispatch = useDispatch();
 
   return (
-    <div className="BoardCard">
+    <div className={styles.board_card}>
       <button
         title="Mover cartão para outra coluna"
         onClick={() => dispatch(openMove(columnIndex, index))}
-        className="BoardCard__move-btn"
+        className={styles.move_button}
       >
-        <BiMoveHorizontal className="BoardCard__move-icon" />
+        <BiMoveHorizontal className={styles.move_icon} />
       </button>
 
       <button
         onClick={() => dispatch(openDetails(columnIndex, index))}
         title="Ir para os detalhes do cartão"
-        className="BoardCard__details-btn"
+        className={styles.details_button}
       >
-        <span className="BoardCard__title">{title}</span>
+        <span className={styles.title}>{title}</span>
 
         {description && (
-          <span className="BoardCard__footer">
-            <BsTextLeft className="BoardCard__footer-icon" />
+          <span className={styles.footer}>
+            <BsTextLeft className={styles.footer_icon} />
           </span>
         )}
       </button>

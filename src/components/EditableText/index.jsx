@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function EditableTitle(props) {
-  const { onEnter, blockClassName } = props;
+export default function EditableText(props) {
+  const { onEnter, styles } = props;
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(props.title);
 
@@ -23,7 +23,7 @@ export default function EditableTitle(props) {
         onKeyDown={handleInputEnter}
         onChange={({ target }) => setTitle(target.value)}
         name="titleText"
-        className={`${blockClassName}__editable-title-input`}
+        className={styles.input}
         autoFocus
       />
     );
@@ -33,19 +33,18 @@ export default function EditableTitle(props) {
     <button
       title="Editar título"
       onClick={() => setEditing(true)}
-      className={`${blockClassName}__editable-title`}
+      className={styles.text}
     >
       {title}
     </button>
   );
 }
 
-EditableTitle.propTypes = {
-  blockClassName: PropTypes.string.isRequired,
+EditableText.propTypes = {
   title: PropTypes.string.isRequired,
   onEnter: PropTypes.func,
 };
 
-EditableTitle.defaultProps = {
+EditableText.defaultProps = {
   onEnter: () => {},
 };
