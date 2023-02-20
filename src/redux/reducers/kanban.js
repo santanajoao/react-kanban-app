@@ -6,7 +6,7 @@ import {
   setColumnTitle,
   moveColumn,
   addCard,
-  // removeCard,
+  removeCard,
   closeDetails,
   openDetails,
   setCardTitle,
@@ -41,14 +41,11 @@ const kanbanReducer = createReducer(initialState, (builder) => {
       const prevCards = state.columns[columnIndex].cards;
       state.columns[columnIndex].cards = [...prevCards, card];
     })
-    // .addCase(removeCard, (state, action) => {
-    //   const { columnID, cardID } = action.payload;
-    //   const columnIndex = state.columns.findIndex(({ id }) => id === columnID);
-    //   const prevCards = state.columns[columnIndex].cards;
-    //   state.columns[columnIndex].cards = prevCards.filter(
-    //     ({ id }) => id !== cardID
-    //   );
-    // })
+    .addCase(removeCard, (state) => {
+      state.detailsModal = false;
+      const column = state.columns[state.editingColumnIndex];
+      column.cards.splice(state.editingCardIndex, 1);
+    })
     .addCase(moveColumn, (state, action) => {
       const { columnIndex, positionDifference } = action.payload;
       const newIndex = getNewIndex(
