@@ -1,4 +1,4 @@
-.CardDetailsModal__close-btn {
+.close_button {
   width: 2.3rem;
   display: flex;
   align-items: center;
@@ -14,21 +14,21 @@
   margin: 0.5rem;
 }
 
-.CardDetailsModal__close-btn:hover {
+.close_button:hover {
   background-color: lightgray;
 }
 
-.CardDetailsModal__close-icon {
+.close_icon {
   font-size: 1rem;
 }
 
-.CardDetailsModal__title-wrapper {
+.title_wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
 
-.CardDetailsModal__editable-title {
+.text {
   font-size: 1.4rem;
   font-weight: 700;
   padding: 0.05em 0;
@@ -41,7 +41,11 @@
   border-radius: 0.1em;
 }
 
-.CardDetailsModal__editable-title-input {
+.text:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.input {
   font-size: 1.4rem;
   font-weight: 700;
   border-radius: 0.1em;
@@ -50,64 +54,37 @@
   max-width: 315px;
 }
 
-.CardDetailsModal__editable-title:hover {
-  background-color: rgb(0, 0, 0, 0.1);
-}
-
-.CardDetailsModal__editable-title-input:focus {
+.input:focus {
   border: 1px solid transparent;
   outline: 2px solid #0079bf;
 }
 
-.CardDetailsModal__column-paragraph {
+.column_title {
   font-size: 0.9rem;
 }
 
-.CardDetailsModal__column-title {
+.underline {
   text-decoration: underline;
 }
 
-.CardDetailsModal__description-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.CardDetailsModal__edit-btn {
-  border: none;
-  background-color: rgb(0, 0, 0, 0.03);
-  text-align: left;
-  cursor: pointer;
-}
-
-.CardDetailsModal__edit-btn:hover {
-  background-color: rgb(0, 0, 0, 0.1);
-}
-
-.CardDetailsModal__description {
-  font-size: 0.9rem;
-  padding: 0.6em;
-  border-radius: 0.2em;
-  min-height: 4em;
-}
-
-.CardDetailsModal__description-wrapper {
+.description_wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.CardDetailsModal__description-form {
+.description_heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.form {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-.CardDetailsModal__form-btns-wrapper {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.CardDetailsModal__description-input {
+.form_input {
   min-height: 4em;
   font-size: 0.9rem;
   resize: none;
@@ -117,12 +94,17 @@
   font-family: sans-serif;
 }
 
-.CardDetailsModal__description-input:focus {
+.form_input:focus {
   outline: 1px solid #0079bf;
   border: 1px solid #0079bf;
 }
 
-.CardDetailsModal__form-btn {
+.buttons_wrapper {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.form_button {
   cursor: pointer;
   font-size: 0.85rem;
   padding: 0.6em 0.9em;
@@ -131,11 +113,29 @@
   background-color: white;
 }
 
-.CardDetailsModal__form-btn:hover {
+.form-button:hover {
   filter: brightness(0.93);
 }
 
-.CardDetailsModal__save-btn {
+.save_button {
   background-color: #0079bf;
   color: white;
+}
+
+.edit_button {
+  border: none;
+  background-color: rgb(0, 0, 0, 0.03);
+  text-align: left;
+  cursor: pointer;
+}
+
+.edit_button:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.description {
+  font-size: 0.9rem;
+  padding: 0.6em;
+  border-radius: 0.2em;
+  min-height: 4em;
 }

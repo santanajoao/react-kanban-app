@@ -6,9 +6,9 @@ import {
   setCardTitle,
   setCardDescription,
 } from '../../redux/actions';
-import EditableTitle from '../EditableTitle';
+import EditableText from '../EditableText';
 import ModalWrapper from '../ModalWrapper';
-import './style.css';
+import styles from './style.module.css';
 
 function CardDetailsModal() {
   const { editingColumnIndex, editingCardIndex, columns } = useSelector(
@@ -38,45 +38,44 @@ function CardDetailsModal() {
       <button
         title="Fechar"
         onClick={() => dispatch(closeDetails())}
-        className="CardDetailsModal__close-btn"
+        className={styles.close_button}
       >
-        <GrClose className="CardDetailsModal__close-icon" />
+        <GrClose className={styles.close_icon} />
       </button>
 
-      <div className="CardDetailsModal__title-wrapper">
-        <EditableTitle
+      <div className={styles.title_wrapper}>
+        <EditableText
+          styles={styles}
           title={cardTitle}
           onEnter={(title) => dispatch(setCardTitle(title))}
-          blockClassName="CardDetailsModal"
         />
-        <p className="CardDetailsModal__column-paragraph">
-          Na coluna{' '}
-          <span className="CardDetailsModal__column-title">{columnTitle}</span>
+        <p className={styles.column_title}>
+          Na coluna <span className={styles.underline}>{columnTitle}</span>
         </p>
       </div>
 
-      <div className="CardDetailsModal__description-wrapper">
-        <h2 className="CardDetailsModal__description-title">Descrição</h2>
+      <div className={styles.description_wrapper}>
+        <h2 className={styles.description_heading}>Descrição</h2>
         {editing ? (
-          <form className="CardDetailsModal__description-form">
+          <form className={styles.form}>
             <textarea
               value={description}
               onChange={({ target }) => setDescription(target.value)}
-              className="CardDetailsModal__description-input"
+              className={styles.form_input}
               autoFocus
             />
-            <div className="CardDetailsModal__form-btns-wrapper">
+            <div className={styles.buttons_wrapper}>
               <button
                 type="button"
                 onClick={saveEditing}
-                className="CardDetailsModal__form-btn CardDetailsModal__save-btn"
+                className={`${styles.form_button} ${styles.save_button}`}
               >
                 Salvar
               </button>
               <button
                 type="button"
                 onClick={cancelEditing}
-                className="CardDetailsModal__form-btn"
+                className={styles.form_button}
               >
                 Cancelar
               </button>
@@ -85,10 +84,10 @@ function CardDetailsModal() {
         ) : (
           <button
             onClick={() => setEditing(true)}
-            className="CardDetailsModal__edit-btn"
+            className={styles.edit_button}
             title="Editar descrição"
           >
-            <p className="CardDetailsModal__description">{description}</p>
+            <p className={styles.description}>{description}</p>
           </button>
         )}
       </div>

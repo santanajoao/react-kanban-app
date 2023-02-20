@@ -1,4 +1,4 @@
-.Header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,7 +8,7 @@
   z-index: 2;
 }
 
-.Header__editable-title {
+.text {
   color: white;
   font-size: 1.3rem;
   font-family: sans-serif;
@@ -20,11 +20,11 @@
   cursor: pointer;
 }
 
-.Header__editable-title:hover {
+.text:hover {
   background-color: rgb(255, 255, 255, 0.3);
 }
 
-.Header__editable-title-input {
+.input {
   border: 2px solid skyblue;
   border-radius: 0.25em;
   font-size: 1.25rem;
@@ -33,11 +33,3 @@
   font-weight: 700;
   outline: none;
 }
-
-/* .Header__wipe-button {
-
-}
-
-.wipe-button-icon {
-
-} */
