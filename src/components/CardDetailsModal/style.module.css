@@ -1,3 +1,7 @@
+.modal {
+  width: 400px;
+}
+
 .close_button {
   width: 2.3rem;
   display: flex;

@@ -34,7 +34,7 @@ function CardDetailsModal() {
   }
 
   return (
-    <ModalWrapper>
+    <ModalWrapper modalClassName={styles.modal}>
       <button
         title="Fechar"
         onClick={() => dispatch(closeDetails())}
