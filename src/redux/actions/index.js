@@ -62,3 +62,5 @@ export const openMove = createAction('openMove', (columnIndex, cardIndex) => ({
 }));
 
 export const moveCard = createAction('moveCard');
+
+export const setColumns = createAction('setColumns');

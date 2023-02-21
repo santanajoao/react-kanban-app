@@ -14,6 +14,7 @@ import {
   closeMove,
   setCardDescription,
   moveCard,
+  setColumns,
 } from '../actions';
 
 const initialState = {
@@ -94,6 +95,9 @@ const kanbanReducer = createReducer(initialState, (builder) => {
       const targetColumn = state.columns[action.payload];
       targetColumn.cards = [...targetColumn.cards, card];
       state.moveModal = false;
+    })
+    .addCase(setColumns, (state, action) => {
+      state.columns = action.payload;
     });
 });
 
