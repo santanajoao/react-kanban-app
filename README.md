@@ -10,7 +10,7 @@ Um quadro Kanban desenvolvido com React e Redux.
 
 Acesse o deploy da aplicação nesse link:
 
-### www.deploy.com
+### react-kanban-app-delta.vercel.app
 
 ## O projeto 💻
 
