@@ -7,11 +7,7 @@ import MoveCardModal from './components/MoveCardModal';
 import styles from './App.module.css';
 
 // mover o cartão para cima ou baixo
-// mover o cartão para outras colunas ícone BiMoveHorizontal
 
-// Criar o componente do cartão
-// > Ao clicar abre informações detalhadas
-// > Pode adicionar / alterar o título e descrição
 // > Tags. Ex: prioridades
 
 // Implementar testes
