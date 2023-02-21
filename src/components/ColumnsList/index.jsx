@@ -12,7 +12,7 @@ export default function ColumnsList() {
 
   useEffect(() => {
     const tasks = JSON.parse(localStorage.getItem('tasks'));
-    if (tasks && tasks.length > 1) {
+    if (tasks && tasks.length > 0) {
       dispatch(setColumns(tasks));
     }
   }, [dispatch]);
