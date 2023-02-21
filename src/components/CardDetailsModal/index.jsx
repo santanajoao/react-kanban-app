@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CloseButton from './CloseButton';
+import CloseButton from '../CloseButton';
 import { closeDetails, removeCard } from '../../redux/actions';
 import ModalOverlay from '../ModalOverlay';
 import styles from './style.module.css';

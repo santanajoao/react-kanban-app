@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import ModalOverlay from '../ModalOverlay';
 import { useDispatch } from 'react-redux';
-import { GrClose } from 'react-icons/gr';
 import styles from './style.module.css';
+import CloseButton from '../CloseButton';
 import { closeMove, moveCard } from '../../redux/actions';
 
 export default function MoveCardModal() {
@@ -11,13 +11,8 @@ export default function MoveCardModal() {
   return (
     <ModalOverlay modalClassName={styles.modal}>
       <div className={styles.modal}>
-        <button
-          title="Fechar"
-          onClick={() => dispatch(closeMove())}
-          className={styles.close_button}
-        >
-          <GrClose className={styles.close_icon} />
-        </button>
+        <CloseButton onClick={() => dispatch(closeMove())} />
+
         <p className={styles.message}>
           Escolha para qual coluna o cartão será movido
         </p>
