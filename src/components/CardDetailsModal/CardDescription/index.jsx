@@ -18,6 +18,12 @@ export default function CardDescription(props) {
     setEditing(false);
   }
 
+  function handleKeys({ key }) {
+    if (key === 'Escape') {
+      setEditing(false);
+    }
+  }
+
   return (
     <div className={styles.description_wrapper}>
       <h2 className={styles.description_heading}>Descrição</h2>
@@ -25,6 +31,7 @@ export default function CardDescription(props) {
         <form className={styles.form}>
           <textarea
             value={description}
+            onKeyDown={handleKeys}
             onChange={({ target }) => setDescription(target.value)}
             className={styles.form_input}
             autoFocus
