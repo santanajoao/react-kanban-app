@@ -6,8 +6,8 @@ export default function EditableText(props) {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(props.title);
 
-  function handleInputEnter({ key, target: { value } }) {
-    if (key === 'Enter' && value) {
+  function handleKeys({ key, target: { value } }) {
+    if ((key === 'Enter' && value) || key === 'Escape') {
       setEditing(false);
       onEnter && onEnter(value);
     }
@@ -20,7 +20,7 @@ export default function EditableText(props) {
         value={title}
         type="text"
         style={titleTextInputStyle}
-        onKeyDown={handleInputEnter}
+        onKeyDown={handleKeys}
         onChange={({ target }) => setTitle(target.value)}
         name="titleText"
         className={styles.input}
