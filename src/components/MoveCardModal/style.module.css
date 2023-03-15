@@ -22,7 +22,6 @@
 
 .column_button {
   cursor: pointer;
-  border: none;
   background-color: rgb(0, 0, 0, 0.1);
   font-size: 0.9rem;
   padding: 0.2em 0.4em;
