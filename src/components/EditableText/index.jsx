@@ -6,10 +6,14 @@ export default function EditableText(props) {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(props.title);
 
+  function save(text) {
+    setEditing(false);
+    if (onEnter) onEnter(text);
+  }
+
   function handleKeys({ key, target: { value } }) {
-    if ((key === 'Enter' && value) || key === 'Escape') {
-      setEditing(false);
-      onEnter && onEnter(value);
+    if (key === 'Enter' && value) {
+      save(value);
     }
   }
 
@@ -17,6 +21,7 @@ export default function EditableText(props) {
   if (editing) {
     return (
       <input
+        onBlur={(e) => save(e.target.value)}
         value={title}
         type="text"
         style={titleTextInputStyle}
